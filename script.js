@@ -1,111 +1,100 @@
-// =====================
-// =====================
-// LOADING SCREEN
-// =====================
+/* =========================================================
+   MH.dev — Portfolio Scripts
+   Refactored: deduped selectors, fixed music-icon toggle,
+   grouped by feature. Same functionality as before.
+========================================================= */
 
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ---------- Loading screen ---------- */
   const loader = document.querySelector(".loader");
 
-  setTimeout(() => {
-    loader.classList.add("hide");
-  }, 800);
-});
+  window.addEventListener("load", () => {
+    setTimeout(() => loader.classList.add("hide"), 800);
+  });
 
-// =====================
-// MUSIC CONTROL
-// =====================
+  /* ---------- Background music ---------- */
+  const music = document.getElementById("bgMusic");
+  const musicBtn = document.getElementById("musicBtn");
+  let musicPlaying = false;
 
-const music = document.getElementById("bgMusic");
-music.volume = 1.0;
-const musicBtn = document.getElementById("musicBtn");
+  music.volume = 1.0;
 
-let musicPlaying = false;
+  musicBtn.addEventListener("click", () => {
+    musicPlaying = !musicPlaying;
 
-musicBtn.addEventListener("click", () => {
-  if (musicPlaying === false) {
-    music.play();
+    if (musicPlaying) {
+      music.play();
+    } else {
+      music.pause();
+    }
 
-    musicBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+    musicBtn.innerHTML = musicPlaying
+      ? '<i class="fa-solid fa-volume-high"></i>'
+      : '<i class="fa-solid fa-volume-xmark"></i>';
 
-    musicPlaying = true;
-  } else {
-    music.pause();
+    musicBtn.setAttribute("aria-pressed", String(musicPlaying));
+  });
 
-    musicBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+  /* ---------- Scroll reveal ---------- */
+  const reveals = document.querySelectorAll(".reveal");
+  const REVEAL_OFFSET = 120;
 
-    musicPlaying = false;
-  }
-});
-// SCROLL REVEAL
-// =====================
-
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll() {
-  reveals.forEach((section) => {
+  function revealOnScroll() {
     const windowHeight = window.innerHeight;
 
-    const elementTop = section.getBoundingClientRect().top;
+    reveals.forEach((section) => {
+      const elementTop = section.getBoundingClientRect().top;
+      if (elementTop < windowHeight - REVEAL_OFFSET) {
+        section.classList.add("active");
+      }
+    });
+  }
 
-    const revealPoint = 120;
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
 
-    if (elementTop < windowHeight - revealPoint) {
-      section.classList.add("active");
-    }
-  });
-}
+  /* ---------- Active navbar link ---------- */
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-links a");
+  const NAV_OFFSET = 200;
 
-window.addEventListener("scroll", revealOnScroll);
+  function highlightActiveLink() {
+    let current = "";
 
-revealOnScroll();
-// =====================
-// ACTIVE NAVBAR
-// =====================
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - NAV_OFFSET;
+      if (window.scrollY >= sectionTop) {
+        current = section.id;
+      }
+    });
 
-const sections = document.querySelectorAll("section");
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+    });
+  }
 
-const navLinks = document.querySelectorAll(".nav-links a");
+  window.addEventListener("scroll", highlightActiveLink);
+  highlightActiveLink();
 
-window.addEventListener("scroll", () => {
-  let current = "";
+  /* ---------- Mobile menu ---------- */
+  const menuBtn = document.querySelector(".menu-btn");
+  const navLinksBox = document.querySelector(".nav-links");
 
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 200;
-
-    if (scrollY >= sectionTop) {
-      current = section.id;
-    }
-  });
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
-});
-
-// MOBILE MENU
-
-const menuBtn = document.querySelector(".menu-btn");
-
-const navLinksBox = document.querySelector(".nav-links");
-
-menuBtn.addEventListener("click", () => {
-  navLinksBox.classList.toggle("show");
-
-  menuBtn.innerHTML = navLinksBox.classList.contains("show")
-    ? '<i class="fa-solid fa-xmark"></i>'
-    : '<i class="fa-solid fa-bars"></i>';
-});
-
-const mobileLinks = document.querySelectorAll(".nav-links a");
-
-mobileLinks.forEach((link) => {
-  link.addEventListener("click", () => {
+  function closeMenu() {
     navLinksBox.classList.remove("show");
-
     menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    menuBtn.setAttribute("aria-expanded", "false");
+  }
+
+  menuBtn.addEventListener("click", () => {
+    const isOpen = navLinksBox.classList.toggle("show");
+    menuBtn.innerHTML = isOpen
+      ? '<i class="fa-solid fa-xmark"></i>'
+      : '<i class="fa-solid fa-bars"></i>';
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
   });
+
+  navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+
 });
