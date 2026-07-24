@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilan. | Portfolio Dashboard</title>
+    <title>Portfolio | Amanda's Design Lab</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,195 +11,227 @@
 </head>
 <body>
 
-    <div class="app-wrapper">
+    <!-- App Container: Membungkus Sidebar & Main Content seperti Dashboard -->
+    <div class="app-container">
         
-        <!-- Sidebar Navigation (Ref: iDraft Dashboard) -->
-        <aside class="sidebar">
-            <div class="logo-area">Dilan.</div>
+        <!-- 1. Sidebar Navigation (Referensi Sidebar Be.run) -->
+        <aside class="app-sidebar">
+            <div class="logo-area">AD.</div>
             
-            <nav class="side-nav">
-                <a href="#hero" class="active"><span class="icon">⌂</span> Overview</a>
-                <a href="#projects"><span class="icon">▦</span> Projects</a>
-                <a href="#gallery"><span class="icon">◆</span> Gallery</a>
-                <a href="#about"><span class="icon">⊞</span> About</a>
+            <nav class="sidebar-nav">
+                <a href="#overview" class="active"><span class="nav-icon">▣</span> Overview</a>
+                <a href="#projects"><span class="nav-icon">◆</span> Projects</a>
+                <a href="#gallery"><span class="nav-icon">□</span> Gallery</a>
+                <a href="#process"><span class="nav-icon">↻</span> Process</a>
+                <a href="#about"><span class="nav-icon">⊡</span> About</a>
             </nav>
 
             <div class="sidebar-footer">
-                <a href="#contact" class="btn-primary mobile-full">Let's Talk</a>
+                <a href="#contact" class="btn-primary full-width">Hire Me</a>
             </div>
         </aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
+        <!-- 2. Main Content Area -->
+        <main class="app-main">
             
-            <!-- Top Header / User Profile (Ref: Logistic/Dashboard UI) -->
-            <header class="top-header">
-                <div class="search-bar">
-                    <input type="text" placeholder="Search portfolio...">
-                </div>
-                <div class="user-profile">
-                    <span class="notif-dot"></span>
-                    <div class="avatar">D</div>
+            <!-- Header: Search & Profile (Referensi Header Be.run) -->
+            <header class="app-header" id="overview">
+                <h1 class="greeting">Hi, I'm Amanda.</h1>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search projects...">
+                    </div>
+                    <div class="user-avatar">AM</div>
                 </div>
             </header>
 
-            <!-- 1. HERO / OVERVIEW (Ref: iDraft Dashboard Stats) -->
-            <section id="hero" class="section-pad-top">
-                <h1 class="welcome-title">Hi, I'm Dilan.</h1>
-                
-                <div class="dashboard-grid">
-                    <!-- Large Statistics Card (Dark Background) -->
-                    <div class="dash-card stat-card dark-card">
-                        <div class="stat-header">
-                            <span class="stat-number">8+</span>
-                            <span class="stat-label">Years Exp.</span>
-                        </div>
-                        <div class="stat-progress">
-                            <span>Expertise</span>
-                            <div class="progress-bar"><div class="fill" style="width: 85%;"></div></div>
-                        </div>
-                        <div class="stat-sub-grid">
-                            <div class="sub-stat">
-                                <span class="num">15</span>
-                                <span class="label">Projects</span>
+            <!-- ==================== GRID 1: HERO INTRO STATS ==================== -->
+            <div class="dashboard-grid-2">
+                <!-- Block A: Large Intro & Stats (Soft Maroon/Cream Background) -->
+                <div class="block-card hero-block">
+                    <div class="hero-content">
+                        <h2>Crafting interfaces that feel <span class="highlight-maroon">human</span>.</h2>
+                        <p>Designing and developing premium digital experiences with a focus on typography, whitespace, and editorial aesthetics.</p>
+                        <div class="hero-stats-row">
+                            <div class="stat-circle">
+                                <span class="stat-num">7+</span>
+                                <span class="stat-label">Years Exp.</span>
                             </div>
-                            <div class="sub-stat">
-                                <span class="num">4</span>
-                                <span class="label">Ongoing</span>
+                            <div class="stat-circle">
+                                <span class="stat-num">24</span>
+                                <span class="stat-label">Projects</span>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Weekly Stats / Graph Card -->
-                    <div class="dash-card graph-card">
-                        <div class="card-title">Activity</div>
-                        <div class="graph-placeholder">
-                            <svg viewBox="0 0 100 40">
-                                <path d="M0,35 L20,20 L40,30 L60,5 L80,15 L100,25" fill="none" stroke="#5A1E2A" stroke-width="2"/>
-                                <circle cx="60" cy="5" r="3" fill="#5A1E2A"/>
-                            </svg>
-                        </div>
-                        <div class="graph-legend">
-                            <span>Design</span> <span>Code</span>
-                        </div>
-                    </div>
-
-                    <!-- Monthly Goal / Task Card -->
-                    <div class="dash-card task-card">
-                        <div class="card-title">Monthly Goals</div>
-                        <ul class="task-list">
-                            <li class="checked"><span>✓</span> Launch Portfolio V3</li>
-                            <li><span>○</span> 5 New Dribbble Shots</li>
-                            <li><span>○</span> Client Meeting Prep</li>
-                        </ul>
                     </div>
                 </div>
-            </section>
 
-            <!-- 2. PROJECTS (Ref: Logistic List + Card UI) -->
+                <!-- Block B: Workout/Activity Replacement (Dark "Training" Calendar Style) -->
+                <div class="block-card dark-stats-card">
+                    <div class="card-header-mini">
+                        <span>Weekly Focus</span>
+                        <span class="badge-maroon">June</span>
+                    </div>
+                    <div class="weekly-grid">
+                        <div class="day active">M</div>
+                        <div class="day">T</div>
+                        <div class="day">W</div>
+                        <div class="day">T</div>
+                        <div class="day done">F</div>
+                        <div class="day">S</div>
+                        <div class="day">S</div>
+                    </div>
+                    <div class="mini-tasks">
+                        <div class="task-item">
+                            <span class="dot-fill"></span> <span>UI Research</span>
+                        </div>
+                        <div class="task-item">
+                            <span class="dot-outline"></span> <span>Dev Review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== GRID 2: PROJECTS (Seperti Habits & Steps) ==================== -->
             <section id="projects" class="section-pad">
-                <div class="flex-header">
-                    <h2 class="section-title">Recent Projects</h2>
-                    <a href="#" class="btn-outline">View All →</a>
+                <div class="section-header">
+                    <h2>Active Projects</h2>
+                    <a href="#" class="btn-outline">View All</a>
                 </div>
 
-                <div class="projects-dash-grid">
-                    <!-- Large Project Card -->
-                    <div class="project-card large-card">
-                        <div class="project-img"></div>
-                        <div class="project-info">
-                            <h3>Travel Log Dashboard</h3>
-                            <span class="status in-progress">In Progress</span>
-                            <p>Interactive trip tracking UI with map integration and itinerary management.</p>
-                            <div class="tech-tags">
-                                <span>React</span> <span>Mapbox</span> <span>Tailwind</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Medium Project Card -->
-                    <div class="project-card medium-card">
-                        <div class="project-img"></div>
-                        <div class="project-info compact">
-                            <h3>Maroon E-Com</h3>
-                            <span class="status completed">Completed</span>
-                        </div>
-                    </div>
-
-                    <!-- Small List Item (Text-heavy) -->
-                    <div class="project-card list-card">
+                <div class="project-layout-grid">
+                    <!-- List Projects (Seperti "My Habits" section) -->
+                    <div class="block-card list-card">
                         <div class="list-item">
                             <div class="list-icon">📦</div>
-                            <div>
-                                <h4>Asset Management</h4>
-                                <p>Design system for creators</p>
+                            <div class="list-info">
+                                <h4>Maroon E-Commerce</h4>
+                                <span class="sub-text">Next.js, Tailwind</span>
                             </div>
-                            <span class="status pending">Pending</span>
+                            <div class="list-progress">
+                                <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
+                                <span class="progress-text">9/12</span>
+                            </div>
                         </div>
                         <div class="list-item">
-                            <div class="list-icon">📄</div>
-                            <div>
-                                <h4>Editorial UI Kit</h4>
-                                <p>Figma component library</p>
+                            <div class="list-icon">🎨</div>
+                            <div class="list-info">
+                                <h4>Design System Lab</h4>
+                                <span class="sub-text">Figma, Storybook</span>
                             </div>
-                            <span class="status in-progress">Active</span>
+                            <div class="list-progress">
+                                <div class="progress-track"><div class="progress-fill" style="width: 45%;"></div></div>
+                                <span class="progress-text">5/11</span>
+                            </div>
+                        </div>
+                        <div class="list-item border-none">
+                            <div class="list-icon">✈️</div>
+                            <div class="list-info">
+                                <h4>Travel Journal App</h4>
+                                <span class="sub-text">React Native</span>
+                            </div>
+                            <div class="list-progress">
+                                <div class="progress-track"><div class="progress-fill" style="width: 20%;"></div></div>
+                                <span class="progress-text">2/10</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Card (Seperti "Weight Loss Plan") -->
+                    <div class="block-card goal-card">
+                        <div class="card-header-mini">
+                            <span>Project Status</span>
+                            <span class="progress-percent">68%</span>
+                        </div>
+                        <div class="goal-visual">
+                            <div class="goal-slider-track">
+                                <div class="goal-slider-fill" style="width: 68%;"></div>
+                                <div class="slider-pin" style="left: 68%;">8</div>
+                            </div>
+                            <div class="goal-labels">
+                                <span>0 Done</span>
+                                <span>12 Total</span>
+                            </div>
+                        </div>
+                        <div class="goal-cta">
+                            <span>Next Milestone</span>
+                            <button class="btn-small-maroon">Review</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 3. GALLERY (Ref: Mobile UI Cards) -->
-            <section id="gallery" class="section-pad bg-off-white">
-                <h2 class="section-title">Design Gallery</h2>
-                <div class="gallery-grid-dash">
-                    <div class="gallery-item large-gallery"><span>Mobile App</span></div>
-                    <div class="gallery-item small-gallery"><span>Website</span></div>
-                    <div class="gallery-item tall-gallery"><span>Dashboard</span></div>
-                    <div class="gallery-item small-gallery"><span>Branding</span></div>
+            <!-- ==================== GRID 3: GALLERY (Masonry Cards) ==================== -->
+            <section id="gallery" class="section-pad">
+                <div class="section-header">
+                    <h2>Design Gallery</h2>
+                    <a href="#" class="btn-outline">Dribbble</a>
+                </div>
+
+                <div class="gallery-grid-boxes">
+                    <div class="gallery-box tall-box"><span>Mobile UI</span></div>
+                    <div class="gallery-box wide-box"><span>Dashboard</span></div>
+                    <div class="gallery-box square-box"><span>Logo</span></div>
+                    <div class="gallery-box wide-box"><span>Landing Page</span></div>
+                    <div class="gallery-box tall-box"><span>Editorial</span></div>
                 </div>
             </section>
 
-            <!-- 4. ABOUT ME (Ref: Split UI Cards) -->
-            <section id="about" class="section-pad">
-                <div class="split-dash-layout">
-                    <div class="about-text-card">
-                        <h2>Behind the Code.</h2>
-                        <p>I architect digital products with a focus on visual clarity and interaction. Based in Jakarta, I bridge the gap between pixel-perfect design and performant code.</p>
-                        <div class="tools-used">
-                            <span>Figma</span> <span>React</span> <span>TypeScript</span> <span>Framer</span>
+            <!-- ==================== GRID 4: PROCESS & ABOUT (Split) ==================== -->
+            <div class="split-50-50 section-pad" id="process">
+                <!-- Process -->
+                <div class="block-card process-card">
+                    <h3>My Workflow</h3>
+                    <div class="process-steps">
+                        <div class="step">
+                            <span class="step-num">01</span>
+                            <div>
+                                <h4>Discover</h4>
+                                <p>User research & problem framing.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="experience-timeline-card">
-                        <div class="timeline-item">
-                            <span class="year">2023 - Now</span>
-                            <h4>Lead UI Engineer</h4>
-                            <p>Studio Maroon</p>
+                        <div class="step">
+                            <span class="step-num">02</span>
+                            <div>
+                                <h4>Design</h4>
+                                <p>Wireframing & high-fidelity UI.</p>
+                            </div>
                         </div>
-                        <div class="timeline-item">
-                            <span class="year">2020 - 2023</span>
-                            <h4>Frontend Developer</h4>
-                            <p>Creative Digital Agency</p>
+                        <div class="step">
+                            <span class="step-num">03</span>
+                            <div>
+                                <h4>Build</h4>
+                                <p>Clean, semantic, responsive code.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- 7. CONTACT -->
-            <section id="contact" class="section-pad">
-                <div class="cta-dark-card">
-                    <div class="cta-content">
-                        <h2>Need a partner?</h2>
-                        <p>Let's build something great together.</p>
-                        <a href="#" class="btn-primary mobile-full">DM on Instagram</a>
+                <!-- About -->
+                <div class="block-card about-card" id="about">
+                    <h3>About Me</h3>
+                    <p>I'm a UI Designer & Frontend Developer based in Jakarta. I specialize in bridging the gap between high-end visual design and functional, performant code.</p>
+                    <div class="skill-tags">
+                        <span>Figma</span><span>React</span><span>TypeScript</span><span>CSS Grid</span><span>Framer</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- ==================== CONTACT (Dark Section) ==================== -->
+            <section id="contact" class="contact-cta-block">
+                <div class="cta-content">
+                    <h2>Let's build something <span class="highlight-white">together</span>.</h2>
+                    <p>DM me on Instagram for project inquiries.</p>
+                    <a href="#" class="btn-primary-dark">Instagram</a>
                 </div>
             </section>
 
-            <!-- 8. FOOTER -->
-            <footer class="dash-footer">
-                <p>&copy; 2026 Dilan. All Rights Reserved.</p>
-                <div class="footer-nav-mini">
-                    <a href="#">Twitter</a> <a href="#">Dribbble</a> <a href="#">Github</a>
+            <!-- ==================== FOOTER ==================== -->
+            <footer class="app-footer">
+                <div class="footer-left">&copy; 2026 Amanda Design Lab.</div>
+                <div class="footer-right">
+                    <a href="#">Twitter</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Dribbble</a>
                 </div>
             </footer>
 
