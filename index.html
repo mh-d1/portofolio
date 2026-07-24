@@ -1,1717 +1,203 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MH.dev — Frontend Developer</title>
-    <meta name="description" content="MH.dev is a frontend developer portfolio showcasing modern websites, UI design, and creative coding projects." />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-
-    <style>
-        /* ============================================================
-           ROOT — TETAP DENGAN WARNA ASLI
-           ============================================================ */
-        :root {
-            /* Warna asli dari web lama */
-            --color-bg: #f4f9ff;
-            --color-bg-alt: #f8fbff;
-            --color-bg-soft: #f7fbff;
-            --color-surface: #ffffff;
-            --color-text: #173a63;
-            --color-text-muted: #607d8b;
-            --color-text-muted-2: #64748b;
-            --color-primary: #1264ff;
-            --color-primary-light: #177ee6;
-            --color-accent: #4da3ff;
-            --color-dark: #071a35;
-            --color-border: #e5efff;
-            --color-chip-bg: #edf5ff;
-            --color-tag-bg: #e6f3ff;
-            --color-success: #22c55e;
-
-            /* Shadow — lebih refined */
-            --shadow-sm: 0 2px 8px rgba(18, 100, 255, 0.06);
-            --shadow-md: 0 8px 24px rgba(18, 100, 255, 0.08);
-            --shadow-lg: 0 16px 48px rgba(18, 100, 255, 0.10);
-            --shadow-xl: 0 24px 64px rgba(18, 100, 255, 0.14);
-
-            /* Radius */
-            --radius-sm: 12px;
-            --radius-md: 18px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
-            --radius-full: 999px;
-
-            /* Container */
-            --container: 1200px;
-            --section-pad: clamp(60px, 10vh, 100px);
-
-            /* Font */
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        /* ============================================================
-           RESET
-           ============================================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font);
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        button {
-            font-family: inherit;
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-        ul {
-            list-style: none;
-        }
-
-        /* ============================================================
-           UTILITY
-           ============================================================ */
-        .container {
-            max-width: var(--container);
-            margin: 0 auto;
-            padding: 0 clamp(20px, 5vw, 60px);
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
-            background: var(--color-tag-bg);
-            color: var(--color-primary);
-            font-weight: 600;
-            font-size: 13px;
-            border-radius: var(--radius-full);
-            letter-spacing: 0.3px;
-            margin-bottom: 16px;
-        }
-
-        .section-label i {
-            font-size: 12px;
-        }
-
-        .section-heading {
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-        }
-
-        .section-heading .highlight {
-            color: var(--color-primary);
-        }
-
-        .section-desc {
-            color: var(--color-text-muted);
-            font-size: 17px;
-            line-height: 1.8;
-            max-width: 560px;
-            margin-top: 14px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 52px;
-        }
-
-        .section-header .section-desc {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ============================================================
-           LOADER
-           ============================================================ */
-        .loader {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: var(--color-dark);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .loader-logo {
-            font-size: 38px;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.02em;
-        }
-
-        .loader-logo span {
-            color: var(--color-accent);
-        }
-
-        .loader-bar {
-            width: 140px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-full);
-            margin-top: 20px;
-            overflow: hidden;
-        }
-
-        .loader-bar-inner {
-            height: 100%;
-            width: 0;
-            background: var(--color-accent);
-            border-radius: var(--radius-full);
-            animation: loadProgress 1s ease forwards;
-        }
-
-        @keyframes loadProgress {
-            0% {
-                width: 0;
-            }
-            100% {
-                width: 100%;
-            }
-        }
-
-        /* ============================================================
-           NAVBAR — TETAP GLASSMORPHISM
-           ============================================================ */
-        .navbar {
-            position: fixed;
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(92%, 1300px);
-            padding: 14px 28px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-radius: var(--radius-full);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            flex-shrink: 0;
-        }
-
-        .logo span {
-            color: var(--color-primary);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--color-text-muted);
-            transition: color 0.2s ease;
-            position: relative;
-            padding: 4px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-primary);
-            transition: width 0.25s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-text);
-        }
-
-        .nav-links a.active {
-            color: var(--color-primary);
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-hire {
-            padding: 10px 24px;
-            background: var(--color-primary);
-            color: #fff;
-            font-weight: 600;
-            font-size: 14px;
-            border-radius: var(--radius-full);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-hire:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(18, 100, 255, 0.30);
-        }
-
-        .menu-toggle {
-            display: none;
-            width: 40px;
-            height: 40px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: var(--color-primary);
-            color: #fff;
-            font-size: 18px;
-        }
-
-        /* Status badge di navbar — lebih subtle */
-        .status-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--color-text-muted);
-            padding: 6px 14px;
-            background: rgba(34, 197, 94, 0.08);
-            border-radius: var(--radius-full);
-        }
-
-        .status-badge .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--color-success);
-            animation: pulseDot 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseDot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(0.8);
-            }
-        }
-
-        /* ============================================================
-           HERO — DIPERBAIKI LAYOUTNYA
-           ============================================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 130px 0 80px;
-            position: relative;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content .section-label {
-            margin-bottom: 18px;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(40px, 5.5vw, 62px);
-            font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -0.03em;
-        }
-
-        .hero-content h1 .highlight {
-            color: var(--color-primary);
-        }
-
-        .hero-content p {
-            font-size: 17px;
-            color: var(--color-text-muted);
-            max-width: 480px;
-            line-height: 1.8;
-            margin-top: 18px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 14px;
-            margin-top: 34px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 32px;
-            background: var(--color-primary);
-            color: #fff;
-            font-weight: 600;
-            font-size: 15px;
-            border-radius: var(--radius-full);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(18, 100, 255, 0.30);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 32px;
-            border: 2px solid var(--color-border);
-            color: var(--color-text);
-            font-weight: 600;
-            font-size: 15px;
-            border-radius: var(--radius-full);
-            background: var(--color-surface);
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--color-primary);
-            transform: translateY(-3px);
-        }
-
-        /* Hero Image */
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-frame {
-            width: 360px;
-            height: 360px;
-            border-radius: var(--radius-xl);
-            padding: 10px;
-            background: var(--color-surface);
-            box-shadow: var(--shadow-xl);
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .profile-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: calc(var(--radius-xl) - 6px);
-        }
-
-        /* Hero Stats — DIPERBAIKI POSISINYA */
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-top: 48px;
-            padding: 20px 28px;
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 6px 0;
-        }
-
-        .stat-item .number {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--color-primary);
-        }
-
-        .stat-item .label {
-            font-size: 13px;
-            color: var(--color-text-muted);
-            margin-top: 2px;
-        }
-
-        /* ============================================================
-           ABOUT — TETAP DENGAN GAYA ASLI
-           ============================================================ */
-        .about {
-            padding: var(--section-pad) 0;
-            background: var(--color-bg-alt);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-image {
-            background: var(--color-surface);
-            padding: 14px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-radius: calc(var(--radius-lg) - 6px);
-        }
-
-        .about-content .section-heading {
-            margin-top: 0;
-        }
-
-        .about-content p {
-            color: var(--color-text-muted);
-            font-size: 17px;
-            line-height: 1.8;
-            margin-top: 18px;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 32px;
-        }
-
-        .stat-card {
-            padding: 20px;
-            background: var(--color-surface);
-            border-radius: var(--radius-sm);
-            text-align: center;
-            border: 1px solid var(--color-border);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .stat-card .number {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--color-primary);
-        }
-
-        .stat-card .label {
-            font-size: 13px;
-            color: var(--color-text-muted);
-            margin-top: 2px;
-        }
-
-        /* ============================================================
-           SERVICES — TETAP
-           ============================================================ */
-        .services {
-            padding: var(--section-pad) 0;
-            background: var(--color-surface);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-        }
-
-        .service-card {
-            padding: 36px 28px;
-            background: var(--color-bg-soft);
-            border-radius: var(--radius-lg);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--color-border);
-        }
-
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: var(--radius-sm);
-            background: var(--color-tag-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            color: var(--color-primary);
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .service-card p {
-            color: var(--color-text-muted);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        /* ============================================================
-           SKILLS — TETAP
-           ============================================================ */
-        .skills {
-            padding: var(--section-pad) 0;
-            background: var(--color-bg-alt);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-card {
-            padding: 24px;
-            background: var(--color-surface);
-            border-radius: var(--radius-sm);
-            text-align: center;
-            border: 1px solid var(--color-border);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .skill-card .icon {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--color-primary);
-        }
-
-        .skill-card h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-top: 8px;
-        }
-
-        .skill-card p {
-            font-size: 13px;
-            color: var(--color-text-muted);
-            margin-top: 4px;
-        }
-
-        /* ============================================================
-           PROJECTS — DIPERBAIKI DENGAN VISUAL PREVIEW
-           ============================================================ */
-        .projects {
-            padding: var(--section-pad) 0;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
-        }
-
-        .project-card {
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            border: 1px solid var(--color-border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-thumb {
-            height: 180px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .project-thumb .num {
-            font-size: 48px;
-            font-weight: 800;
-            color: rgba(255, 255, 255, 0.15);
-            letter-spacing: -0.03em;
-        }
-
-        .project-thumb .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(18, 100, 255, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .overlay {
-            opacity: 1;
-        }
-
-        .project-thumb .overlay .btn-view {
-            padding: 10px 24px;
-            background: #fff;
-            color: var(--color-text);
-            font-weight: 600;
-            font-size: 14px;
-            border-radius: var(--radius-full);
-            transform: translateY(12px);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .overlay .btn-view {
-            transform: translateY(0);
-        }
-
-        .project-body {
-            padding: 24px 28px;
-        }
-
-        .project-body h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .project-body p {
-            color: var(--color-text-muted);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 14px 0 18px;
-        }
-
-        .project-tags span {
-            padding: 4px 14px;
-            background: var(--color-chip-bg);
-            color: var(--color-primary);
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: var(--radius-full);
-        }
-
-        .project-link {
-            color: var(--color-primary);
-            font-weight: 600;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: gap 0.2s ease;
-        }
-
-        .project-link:hover {
-            gap: 12px;
-        }
-
-        /* ============================================================
-           EXPERIENCE — TIMELINE
-           ============================================================ */
-        .experience {
-            padding: var(--section-pad) 0;
-            background: var(--color-bg-alt);
-        }
-
-        .timeline {
-            max-width: 740px;
-            margin: 0 auto;
-            position: relative;
-            padding-left: 28px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 6px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: var(--color-border);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 36px;
-        }
-
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -22px;
-            top: 4px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--color-primary);
-            border: 3px solid var(--color-bg-alt);
-            box-shadow: 0 0 0 3px rgba(18, 100, 255, 0.15);
-        }
-
-        .timeline-content {
-            background: var(--color-surface);
-            padding: 24px 28px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--color-border);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .timeline-content:hover {
-            transform: translateX(6px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .timeline-content h3 {
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .timeline-content .date {
-            display: block;
-            font-size: 13px;
-            color: var(--color-primary);
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .timeline-content p {
-            color: var(--color-text-muted);
-            font-size: 14px;
-            line-height: 1.7;
-            margin-top: 10px;
-        }
-
-        /* ============================================================
-           CONTACT — TETAP DENGAN INSTAGRAM
-           ============================================================ */
-        .contact {
-            padding: var(--section-pad) 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .contact-info .section-heading {
-            margin-top: 0;
-        }
-
-        .contact-info p {
-            color: var(--color-text-muted);
-            font-size: 17px;
-            line-height: 1.8;
-            margin-top: 14px;
-        }
-
-        .contact-social {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 24px;
-        }
-
-        .contact-social a {
-            padding: 10px 22px;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-full);
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--color-text-muted);
-            transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-        }
-
-        .contact-social a:hover {
-            border-color: var(--color-primary);
-            color: var(--color-primary);
-            transform: translateY(-2px);
-        }
-
-        .contact-card {
-            padding: 40px;
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            text-align: center;
-            border: 1px solid var(--color-border);
-            box-shadow: var(--shadow-sm);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .contact-card:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-card .icon {
-            font-size: 44px;
-            color: var(--color-primary);
-            margin-bottom: 16px;
-        }
-
-        .contact-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .contact-card p {
-            color: var(--color-text-muted);
-            font-size: 15px;
-            margin-bottom: 24px;
-        }
-
-        /* ============================================================
-           FOOTER
-           ============================================================ */
-        .footer {
-            padding: 48px 0;
-            background: var(--color-dark);
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-        }
-
-        .footer .logo {
-            color: #fff;
-            font-size: 24px;
-        }
-
-        .footer .logo span {
-            color: var(--color-accent);
-        }
-
-        .footer p {
-            font-size: 14px;
-            max-width: 480px;
-            margin: 12px auto 28px;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 28px;
-        }
-
-        .footer-social a {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .footer-social a:hover {
-            color: #fff;
-        }
-
-        .footer-copy {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.25);
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 24px;
-        }
-
-        /* ============================================================
-           REVEAL — SCROLL ANIMATION
-           ============================================================ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
-
-        /* Tablet */
-        @media (max-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .hero-content p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-actions {
-                justify-content: center;
-            }
-
-            .profile-frame {
-                width: 280px;
-                height: 280px;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .about-stats {
-                justify-items: center;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .contact-social {
-                justify-content: center;
-            }
-
-            /* Mobile Nav */
-            .nav-links {
-                position: absolute;
-                top: calc(100% + 10px);
-                left: 16px;
-                right: 16px;
-                flex-direction: column;
-                gap: 6px;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                padding: 18px;
-                border-radius: var(--radius-md);
-                box-shadow: var(--shadow-lg);
-                border: 1px solid var(--color-border);
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-10px) scale(0.96);
-                transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
-            }
-
-            .nav-links.open {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0) scale(1);
-            }
-
-            .nav-links a {
-                padding: 10px 14px;
-                width: 100%;
-                border-radius: var(--radius-sm);
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .nav-links a:hover {
-                background: var(--color-tag-bg);
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .btn-hire {
-                display: none;
-            }
-
-            .status-badge {
-                display: none;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 640px) {
-            .navbar {
-                padding: 12px 18px;
-                top: 12px;
-                width: 96%;
-            }
-
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .hero-content h1 {
-                font-size: 34px;
-            }
-
-            .profile-frame {
-                width: 200px;
-                height: 200px;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 16px;
-                gap: 8px;
-            }
-
-            .stat-item .number {
-                font-size: 20px;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-actions .btn-primary,
-            .hero-actions .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .about-image img {
-                height: 240px;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-                width: 100%;
-            }
-
-            .stat-card {
-                width: 100%;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline {
-                padding-left: 20px;
-            }
-
-            .timeline-dot {
-                left: -18px;
-                width: 12px;
-                height: 12px;
-            }
-
-            .contact-card {
-                padding: 28px 20px;
-            }
-
-            .footer-social {
-                flex-wrap: wrap;
-                gap: 16px;
-            }
-        }
-
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            .reveal {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
-            .loader-bar-inner {
-                animation: none !important;
-                width: 100% !important;
-            }
-
-            html {
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Frontend Developer & UI Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ==========================================================
-    LOADER
-    ========================================================== -->
-    <div class="loader" id="loader">
-        <div class="loader-logo">MH<span>.dev</span></div>
-        <div class="loader-bar">
-            <div class="loader-bar-inner"></div>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">A.R.</a>
+            <ul class="nav-menu">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="btn-primary">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- ==========================================================
-    NAVBAR
-    ========================================================== -->
-    <header class="navbar" id="navbar">
-        <a href="#home" class="logo">MH<span>.dev</span></a>
-
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Journey</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-
-        <div class="nav-right">
-            <span class="status-badge">
-                <span class="dot"></span>
-                Available
-            </span>
-            <a href="#contact" class="btn-hire">Hire Me</a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+    <!-- 1. Hero Section -->
+    <header id="hero">
+        <div class="container hero-layout">
+            <div class="hero-text">
+                <h1>Designing & building <span class="highlight">usable</span> interfaces.</h1>
+                <p>I'm a frontend developer and UI designer based in Jakarta. I focus on creating editorially-driven layouts with a strong emphasis on whitespace, typography, and functional beauty.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">View Projects</a>
+                    <a href="#about" class="btn-secondary">About Me</a>
+                </div>
+            </div>
+            <div class="hero-cards">
+                <div class="floating-card card-1"><div class="img-placeholder"></div></div>
+                <div class="floating-card card-2"><div class="img-placeholder"></div></div>
+                <div class="floating-card card-3"><div class="img-placeholder"></div></div>
+            </div>
         </div>
     </header>
 
-    <!-- ==========================================================
-    HERO
-    ========================================================== -->
-    <section class="hero" id="home">
+    <!-- 2. Featured Projects -->
+    <section id="projects" class="section-pad">
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <span class="section-label">
-                        <i class="fas fa-sparkles"></i>
-                        Available for Freelance
-                    </span>
-                    <h1>
-                        Crafting Modern<br />
-                        <span class="highlight">Web Experiences</span>
-                    </h1>
-                    <p>
-                        I design and build responsive websites with clean interfaces,
-                        modern layouts, and smooth user experiences.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn-primary">
-                            <i class="fas fa-arrow-right"></i> View My Work
-                        </a>
-                        <a href="#contact" class="btn-secondary">
-                            <i class="fas fa-paper-plane"></i> Let's Talk
-                        </a>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="profile-frame">
-                        <img src="assetswebs/profil.jpg" alt="MH Profile" loading="lazy" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats — sekarang di dalam container, posisi natural -->
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="number">10+</div>
-                    <div class="label">Projects</div>
-                </div>
-                <div class="stat-item">
-                    <div class="number">100%</div>
-                    <div class="label">Responsive</div>
-                </div>
-                <div class="stat-item">
-                    <div class="number">⚡</div>
-                    <div class="label">Fast</div>
-                </div>
-                <div class="stat-item">
-                    <div class="number">✨</div>
-                    <div class="label">Modern</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================
-    ABOUT
-    ========================================================== -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image reveal">
-                    <img src="assetswebs/about.jpg" alt="About MH" loading="lazy" />
-                </div>
-                <div class="about-content reveal">
-                    <span class="section-label">
-                        <i class="fas fa-user"></i> About Me
-                    </span>
-                    <h2 class="section-heading">
-                        Passionate About <span class="highlight">Building Modern Websites</span>
-                    </h2>
-                    <p>
-                        Hi, I'm MH, a Frontend Developer who enjoys transforming ideas into
-                        clean, responsive, and user-friendly websites. I focus on creating
-                        modern interfaces that are simple, fast, and enjoyable to use
-                        across all devices.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-card">
-                            <div class="number">10+</div>
-                            <div class="label">Projects</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="number">100%</div>
-                            <div class="label">Responsive</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="number">24/7</div>
-                            <div class="label">Learning</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================
-    SERVICES
-    ========================================================== -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label"><i class="fas fa-cog"></i> Services</span>
-                <h2 class="section-heading">What Can I <span class="highlight">Build</span>?</h2>
-                <p class="section-desc">I help businesses and individuals build beautiful, responsive, and modern websites.</p>
-            </div>
-
-            <div class="services-grid">
-                <article class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Landing Page</h3>
-                    <p>Modern landing pages for products, startups, and businesses.</p>
-                </article>
-                <article class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-globe"></i></div>
-                    <h3>Company Profile</h3>
-                    <p>Professional websites to showcase your business and services.</p>
-                </article>
-                <article class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-user"></i></div>
-                    <h3>Portfolio Website</h3>
-                    <p>Personal portfolio websites for creators and professionals.</p>
-                </article>
-                <article class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-code"></i></div>
-                    <h3>Frontend Development</h3>
-                    <p>Turning UI designs into responsive HTML, CSS, and JavaScript websites.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================
-    SKILLS
-    ========================================================== -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label"><i class="fas fa-code"></i> My Skills</span>
-                <h2 class="section-heading">Tech <span class="highlight">Stack</span></h2>
-                <p class="section-desc">Tools and technologies I use to build modern websites.</p>
-            </div>
-
-            <div class="skills-grid">
-                <div class="skill-card reveal">
-                    <div class="icon">HTML</div>
-                    <h4>HTML</h4>
-                    <p>Structure &amp; semantic web</p>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="icon">CSS</div>
-                    <h4>CSS</h4>
-                    <p>Modern layouts &amp; animations</p>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="icon">JS</div>
-                    <h4>JavaScript</h4>
-                    <p>Interactive web experience</p>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="icon">Git</div>
-                    <h4>Git</h4>
-                    <p>Version control workflow</p>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="icon">GitHub</div>
-                    <h4>GitHub</h4>
-                    <p>Project hosting &amp; collaboration</p>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="icon">Figma</div>
-                    <h4>Figma</h4>
-                    <p>UI design &amp; prototyping</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================
-    PROJECTS
-    ========================================================== -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label"><i class="fas fa-folder"></i> My Work</span>
-                <h2 class="section-heading">Featured <span class="highlight">Projects</span></h2>
-                <p class="section-desc">Some projects I have built and experimented with.</p>
-            </div>
-
+            <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <article class="project-card reveal">
-                    <div class="project-thumb">
-                        <span class="num">01</span>
-                        <div class="overlay">
-                            <a href="https://xone-website.vercel.app/" target="_blank" class="btn-view">
-                                <i class="fas fa-external-link-alt"></i> View Live
-                            </a>
+                <!-- Large Card -->
+                <article class="project-card large">
+                    <div class="card-image"><div class="img-placeholder"></div></div>
+                    <div class="card-content">
+                        <span class="category">Platform / 2024</span>
+                        <h3>Editorial Dashboard</h3>
+                        <p>A publishing interface that prioritizes reading flow and asset management for content creators.</p>
+                        <div class="tags">
+                            <span>React</span><span>TypeScript</span><span>CSS Grid</span>
                         </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Xone Website</h3>
-                        <p>Modern landing page inspired by Apple design.</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JS</span>
-                        </div>
-                        <a href="https://xone-website.vercel.app/" target="_blank" class="project-link">
-                            View Project <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <a href="#" class="view-project">View Project &rarr;</a>
                     </div>
                 </article>
 
-                <article class="project-card reveal">
-                    <div class="project-thumb">
-                        <span class="num">02</span>
-                        <div class="overlay">
-                            <a href="https://musone.vercel.app/" target="_blank" class="btn-view">
-                                <i class="fas fa-external-link-alt"></i> View Live
-                            </a>
+                <!-- Small Card -->
+                <article class="project-card small">
+                    <div class="card-image"><div class="img-placeholder"></div></div>
+                    <div class="card-content">
+                        <span class="category">E-Commerce / 2023</span>
+                        <h3>Maroon Market</h3>
+                        <p>Minimalist shopping experience with an advanced filtering system.</p>
+                        <div class="tags">
+                            <span>Next.js</span><span>Tailwind</span>
                         </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>MH Museum</h3>
-                        <p>History museum website with a clean, minimal interface.</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JS</span>
-                        </div>
-                        <a href="https://musone.vercel.app/" target="_blank" class="project-link">
-                            View Project <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <a href="#" class="view-project">View Project &rarr;</a>
                     </div>
                 </article>
 
-                <article class="project-card reveal">
-                    <div class="project-thumb">
-                        <span class="num">03</span>
-                        <div class="overlay">
-                            <a href="https://pixel-fighter.vercel.app/" target="_blank" class="btn-view">
-                                <i class="fas fa-external-link-alt"></i> View Live
-                            </a>
+                <!-- Vertical Tall Card -->
+                <article class="project-card tall">
+                    <div class="card-image"><div class="img-placeholder"></div></div>
+                    <div class="card-content">
+                        <span class="category">Mobile / 2024</span>
+                        <h3>Travel Journal</h3>
+                        <p>Responsive web app for logging travel memories with offline support.</p>
+                        <div class="tags">
+                            <span>Vue</span><span>Pinia</span>
                         </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Pixel Fighter Game</h3>
-                        <p>Browser fighting game experiment using Phaser.</p>
-                        <div class="project-tags">
-                            <span>Phaser</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <a href="https://pixel-fighter.vercel.app/" target="_blank" class="project-link">
-                            View Project <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <a href="#" class="view-project">View Project &rarr;</a>
                     </div>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================================
-    EXPERIENCE
-    ========================================================== -->
-    <section class="experience" id="experience">
+    <!-- 4. Design Gallery -->
+    <section id="gallery" class="section-pad bg-cream">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label"><i class="fas fa-road"></i> My Journey</span>
-                <h2 class="section-heading">My <span class="highlight">Experience</span></h2>
-                <p class="section-desc">My learning journey and development experience.</p>
+            <h2 class="section-title">Design Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><div class="img-placeholder" style="height: 250px;"></div></div>
+                <div class="gallery-item"><div class="img-placeholder" style="height: 400px;"></div></div>
+                <div class="gallery-item"><div class="img-placeholder" style="height: 300px;"></div></div>
+                <div class="gallery-item"><div class="img-placeholder" style="height: 350px;"></div></div>
+                <div class="gallery-item"><div class="img-placeholder" style="height: 200px;"></div></div>
+                <div class="gallery-item"><div class="img-placeholder" style="height: 450px;"></div></div>
             </div>
+        </div>
+    </section>
 
-            <div class="timeline">
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Frontend Developer</h3>
-                        <span class="date">2026 — Present</span>
-                        <p>Building modern websites using HTML, CSS, JavaScript, and exploring UI design.</p>
+    <!-- 5. About Me -->
+    <section id="about" class="section-pad">
+        <div class="container split-layout">
+            <div class="split-left">
+                <h2 class="section-title">About me</h2>
+                <p>I don't just build websites; I craft editorial experiences. With a background in graphic design and a passion for clean code, I bridge the gap between visual storytelling and technical performance.</p>
+                <p>I believe that good design is invisible, and the best interfaces are the ones you don't notice because they just work.</p>
+            </div>
+            <div class="split-right">
+                <div class="skill-card">
+                    <h4>My Toolkit</h4>
+                    <div class="skills-grid">
+                        <span>React</span><span>TypeScript</span><span>Next.js</span>
+                        <span>Figma</span><span>Adobe XD</span><span>CSS3</span>
+                        <span>GSAP</span><span>Storybook</span>
                     </div>
                 </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Web Development Learning</h3>
-                        <span class="date">2025 — 2026</span>
-                        <p>Learning frontend development, responsive design, and creating personal projects.</p>
+                <div class="experience-card">
+                    <h4>Experience</h4>
+                    <div class="exp-item">
+                        <span class="exp-role">Lead Designer</span>
+                        <span class="exp-company">Studio Maroon</span>
+                        <span class="exp-date">2022 - Present</span>
                     </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Creative Coding</h3>
-                        <span class="date">2025</span>
-                        <p>Experimenting with interactive websites, PWA, and browser-based games.</p>
+                    <div class="exp-item">
+                        <span class="exp-role">Frontend Dev</span>
+                        <span class="exp-company">Creative Agency</span>
+                        <span class="exp-date">2019 - 2022</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================================
-    CONTACT
-    ========================================================== -->
-    <section class="contact" id="contact">
+    <!-- 6. Process Section -->
+    <section id="process" class="section-pad bg-cream">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label"><i class="fas fa-envelope"></i> Get In Touch</span>
-                <h2 class="section-heading">Let's <span class="highlight">Work Together</span></h2>
-                <p class="section-desc">Have a project idea? Let's make it happen.</p>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info reveal">
-                    <span class="section-label"><i class="fas fa-comment"></i> Contact</span>
-                    <h2 class="section-heading">Let's Build Something <span class="highlight">Amazing</span></h2>
-                    <p>
-                        For website projects, landing pages, frontend development,
-                        or creative ideas, feel free to reach out.
-                    </p>
-                    <div class="contact-social">
-                        <a href="https://instagram.com/hnfi_ehs" target="_blank">
-                            <i class="fab fa-instagram"></i> Instagram
-                        </a>
-                        <a href="https://instagram.com/hnfi_ehs" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                        <a href="https://instagram.com/hnfi_ehs" target="_blank">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-                    </div>
+            <h2 class="section-title">My Process</h2>
+            <div class="process-flex">
+                <div class="process-step">
+                    <span class="step-num">01</span>
+                    <h4>Discover</h4>
+                    <p>Understanding the core problem and audience behavior.</p>
                 </div>
-
-                <div class="contact-card reveal">
-                    <div class="icon"><i class="fab fa-instagram"></i></div>
-                    <h3>Instagram DM</h3>
-                    <p>Available for freelance website projects.</p>
-                    <a href="https://instagram.com/hnfi_ehs" target="_blank" class="btn-primary">
-                        <i class="fas fa-paper-plane"></i> Contact Me
-                    </a>
+                <div class="process-step">
+                    <span class="step-num">02</span>
+                    <h4>Design</h4>
+                    <p>Wireframing and high-fidelity UI designed for readability.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">03</span>
+                    <h4>Develop</h4>
+                    <p>Writing semantic, responsive code with smooth interactions.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">04</span>
+                    <h4>Launch</h4>
+                    <p>Deploying and optimizing for performance and accessibility.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================================
-    FOOTER
-    ========================================================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="logo">MH<span>.dev</span></div>
-            <p>Frontend Developer creating modern and interactive web experiences.</p>
-            <div class="footer-social">
-                <a href="https://instagram.com/hnfi_ehs" target="_blank">GitHub</a>
-                <a href="https://instagram.com/hnfi_ehs" target="_blank">Instagram</a>
-                <a href="https://instagram.com/hnfi_ehs" target="_blank">LinkedIn</a>
-            </div>
-            <div class="footer-copy">&copy; 2026 MH.dev. All rights reserved.</div>
+    <!-- 7. Contact Section -->
+    <section id="contact">
+        <div class="container contact-content">
+            <h2>Need something?</h2>
+            <p>DM me for something.</p>
+            <a href="#" class="btn-instagram">Instagram</a>
+        </div>
+    </section>
+
+    <!-- 8. Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">A.R.</div>
+            <ul class="footer-nav">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="copyright">&copy; 2026 A.R. All Rights Reserved.</div>
         </div>
     </footer>
 
-    <!-- ==========================================================
-    JAVASCRIPT
-    ========================================================== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            /* ---------- LOADER ---------- */
-            const loader = document.getElementById('loader');
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    loader.classList.add('hidden');
-                }, 1000);
-            });
-
-            /* ---------- MOBILE MENU ---------- */
-            const menuToggle = document.getElementById('menuToggle');
-            const navLinks = document.getElementById('navLinks');
-            let isOpen = false;
-
-            menuToggle.addEventListener('click', function() {
-                isOpen = !isOpen;
-                navLinks.classList.toggle('open', isOpen);
-                menuToggle.innerHTML = isOpen ?
-                    '<i class="fas fa-times"></i>' :
-                    '<i class="fas fa-bars"></i>';
-                menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Menu');
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    if (isOpen) {
-                        isOpen = false;
-                        navLinks.classList.remove('open');
-                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                });
-            });
-
-            /* ---------- ACTIVE NAV LINK ---------- */
-            const sections = document.querySelectorAll('section[id]');
-            const navItems = document.querySelectorAll('.nav-links a');
-
-            const navObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.id;
-                        navItems.forEach(function(link) {
-                            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-                        });
-                    }
-                });
-            }, {
-                rootMargin: '-30% 0px -30% 0px'
-            });
-
-            sections.forEach(function(s) { navObserver.observe(s); });
-
-            /* ---------- SCROLL REVEAL ---------- */
-            const reveals = document.querySelectorAll('.reveal');
-
-            const revealObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                rootMargin: '0px 0px -60px 0px',
-                threshold: 0.1
-            });
-
-            reveals.forEach(function(el) { revealObserver.observe(el); });
-
-            /* ---------- NAVBAR SHADOW ---------- */
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', function() {
-                navbar.classList.toggle('scrolled', window.scrollY > 20);
-            }, { passive: true });
-
-            /* ---------- ESCAPE CLOSE MENU ---------- */
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && isOpen) {
-                    isOpen = false;
-                    navLinks.classList.remove('open');
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    menuToggle.focus();
-                }
-            });
-
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
