@@ -3,194 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanaf | Frontend & UI Designer</title>
-    <!-- Google Fonts: Inter for Vercel-style typography -->
+    <title>Hanaf | Black & Bold Design</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- PREMIUM NAVBAR (Vercel / Spotify Style) -->
-    <header class="navbar" id="navbar">
-        <div class="container nav-container">
-            <div class="brand">Hanaf.</div>
-            <nav class="nav-links">
-                <a href="#works" class="nav-item">Works</a>
-                <a href="#about" class="nav-item">About</a>
-                <a href="#contact" class="nav-item btn-nav">Contact</a>
-            </nav>
-            <div class="hamburger" id="mobileMenuBtn">
-                <span></span><span></span><span></span>
+    <!-- MAIN WRAPPER (Gap ke pinggir layar) -->
+    <div class="app-wrapper">
+        
+        <!-- HEADER (Logo & Hamburger Kiri) -->
+        <header class="header">
+            <div class="header-left">
+                <div class="brand-logo">H.</div>
+                <!-- Titik Tiga / Hamburger Menu -->
+                <button class="hamburger-btn" id="menuToggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-        </div>
-    </header>
+            
+            <nav class="desktop-nav">
+                <a href="#works" class="nav-link">Works</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="btn-primary">Contact</a>
+            </nav>
+        </header>
 
-    <main>
-        <!-- 1. HERO SECTION (Vercel Minimalism) -->
-        <section class="hero" id="home">
-            <div class="container hero-grid">
-                <div class="hero-text">
-                    <span class="badge-pill">Frontend & UI Designer</span>
-                    <h1>Building interfaces that feel <span class="text-accent">intentional</span> and <span class="text-accent">human</span>.</h1>
-                    <p class="hero-desc">
-                        I'm Hanaf. I focus on clean code, accessible interfaces, and giving every pixel a purpose. Based in Indonesia with 2+ years of experience.
-                    </p>
+        <!-- SIDEBAR POPUP (Desktop: Pop-up di sebelah kiri. Mobile: Slide-in) -->
+        <aside class="side-panel" id="sidePanel">
+            <div class="panel-header">
+                <span class="panel-title">Menu</span>
+                <button class="close-panel" id="closePanel">✕</button>
+            </div>
+            
+            <!-- Filter UI ala Hioline -->
+            <div class="filter-group">
+                <h3>Category</h3>
+                <div class="input-pill">
+                    <span>Frontend</span>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Stack</h3>
+                <div class="filter-options">
+                    <div class="option-item">
+                        <div class="circle-icon blue"></div>
+                        <span>React</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="option-item">
+                        <div class="circle-icon green"></div>
+                        <span>Vue</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="option-item">
+                        <div class="circle-icon gray"></div>
+                        <span>Next.js</span>
+                        <span class="arrow">→</span>
+                    </div>
+                    <a href="#" class="more-link">+12 more</a>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Role</h3>
+                <div class="dropdown-pill">
+                    <span>Show more</span>
+                    <span class="chevron">⌄</span>
+                </div>
+                <div class="dropdown-pill">
+                    <span>Designer</span>
+                    <span class="chevron">⌄</span>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn-block-black">Apply Filters</button>
+            </div>
+        </aside>
+
+        <!-- OVERLAY (Untuk menutup panel saat klik di luar) -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            
+            <!-- 1. HERO SECTION -->
+            <section class="hero">
+                <div class="hero-content">
+                    <span class="badge">Frontend & UI</span>
+                    <h1>Building bold, <span class="highlight-blue">functional</span> interfaces.</h1>
+                    <p>I'm Hanaf. I focus on clean code, accessible interfaces, and giving every pixel a purpose. Based in Indonesia with 2+ years of experience.</p>
                     <div class="hero-actions">
                         <a href="#works" class="btn-primary">View Projects</a>
-                        <a href="#about" class="btn-secondary">About Me</a>
+                        <a href="#about" class="btn-outline-light">About Me</a>
                     </div>
                 </div>
-                <!-- Floating Card elements (Spotify style floating cards) -->
-                <div class="hero-visuals">
-                    <div class="float-card card-1"><span>HTML5</span></div>
-                    <div class="float-card card-2"><span>CSS3</span></div>
-                    <div class="float-card card-3"><span>React</span></div>
-                    <div class="float-card card-4"><span>Figma</span></div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 2. PROJECTS SECTION (Pinterest Masonry + Spotify Cards) -->
-        <section id="works" class="section-works">
-            <div class="container">
+            <!-- 2. PROJECTS GRID (Vercel style) -->
+            <section id="works" class="section-block">
                 <div class="section-header">
-                    <h2>Selected Works</h2>
-                    <div class="filter-group">
+                    <h2>Featured Works</h2>
+                    <div class="filters">
                         <button class="filter-btn active">All</button>
-                        <button class="filter-btn">Development</button>
-                        <button class="filter-btn">UI Design</button>
+                        <button class="filter-btn">Dev</button>
+                        <button class="filter-btn">UI</button>
                     </div>
                 </div>
 
-                <!-- Pinterest-style Masonry Grid -->
-                <div class="masonry-grid">
-                    <!-- Tall Project -->
-                    <article class="project-card tall">
-                        <div class="card-img-wrapper">
-                            <div class="img-placeholder bg-maroon-light"></div>
-                        </div>
+                <div class="projects-grid">
+                    <!-- Card 1 -->
+                    <article class="project-card">
+                        <div class="card-img bg-blue"></div>
                         <div class="card-content">
-                            <div class="card-meta">
-                                <span class="tag">React</span>
-                                <span class="tag">Tailwind</span>
+                            <div class="tags">
+                                <span>React</span><span>Vercel</span>
                             </div>
-                            <h3>E-Commerce Dashboard</h3>
-                            <p>Performance-focused dashboard with advanced filtering and data visualization.</p>
+                            <h3>E-Com Dashboard</h3>
+                            <p>High-performance dashboard with advanced filtering.</p>
+                            <div class="project-status">
+                                <span class="status-dot green"></span> In Progress
+                            </div>
                         </div>
                     </article>
 
-                    <!-- Wide Project -->
-                    <article class="project-card wide">
-                        <div class="card-img-wrapper">
-                            <div class="img-placeholder bg-accent-light"></div>
-                        </div>
+                    <!-- Card 2 -->
+                    <article class="project-card">
+                        <div class="card-img bg-green"></div>
                         <div class="card-content">
-                            <div class="card-meta">
-                                <span class="tag">Figma</span>
-                                <span class="tag">Design System</span>
+                            <div class="tags">
+                                <span>Figma</span><span>System</span>
                             </div>
                             <h3>Maroon Design Lab</h3>
-                            <p>A cohesive component library built to maintain consistency across multiple platforms.</p>
+                            <p>Cohesive component library for multiple platforms.</p>
+                            <div class="project-status">
+                                <span class="status-dot blue"></span> Completed
+                            </div>
                         </div>
                     </article>
 
-                    <!-- Square Project -->
-                    <article class="project-card square">
-                        <div class="card-img-wrapper">
-                            <div class="img-placeholder bg-dark-maroon"></div>
-                        </div>
+                    <!-- Card 3 -->
+                    <article class="project-card wide">
+                        <div class="card-img bg-gray"></div>
                         <div class="card-content">
-                            <div class="card-meta">
-                                <span class="tag">Next.js</span>
+                            <div class="tags">
+                                <span>Next.js</span><span>Tailwind</span>
                             </div>
                             <h3>Editorial Blog UI</h3>
-                        </div>
-                    </article>
-
-                    <!-- Tall Project 2 -->
-                    <article class="project-card tall">
-                        <div class="card-img-wrapper">
-                            <div class="img-placeholder bg-soft-gray"></div>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-meta">
-                                <span class="tag">Responsive</span>
-                                <span class="tag">CSS Grid</span>
+                            <p>Typography-focused blog platform with custom CMS integration.</p>
+                            <div class="project-status">
+                                <span class="status-dot green"></span> Live
                             </div>
-                            <h3>Travel Journal App</h3>
-                            <p>Mobile-first web app designed for logging travel memories with offline support.</p>
                         </div>
                     </article>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 3. ABOUT & SKILLS SECTION (Vercel Split/Grid) -->
-        <section id="about" class="section-about bg-cream">
-            <div class="container about-grid">
-                <div class="about-text">
-                    <span class="section-label">About</span>
-                    <h2>I enjoy solving UI problems.</h2>
-                    <p>I'm a frontend developer and UI designer who believes simplicity creates better digital products. I pay close attention to layout, spacing, typography, and responsiveness.</p>
-                    <p>I prefer writing clean and maintainable code, and building reusable UI components. Quality over quantity is my approach to every project.</p>
-                    
-                    <div class="tool-stack">
-                        <span>VS Code</span><span>Figma</span><span>Git</span><span>Chrome DevTools</span><span>Vercel</span>
-                    </div>
+            <!-- 3. ABOUT SECTION -->
+            <section id="about" class="section-block split-section">
+                <div class="section-header">
+                    <h2>About Me</h2>
                 </div>
-                
-                <div class="skills-block">
-                    <h3>Skills & Expertise</h3>
-                    <div class="skills-list">
-                        <div class="skill-group">
-                            <h4>Frontend</h4>
-                            <ul>
-                                <li>HTML5 / CSS3 / JS (ES6+)</li>
-                                <li>Responsive Design</li>
-                                <li>CSS Grid & Flexbox</li>
-                                <li>Web Accessibility</li>
-                            </ul>
-                        </div>
-                        <div class="skill-group">
-                            <h4>UI Design</h4>
-                            <ul>
-                                <li>Figma (Auto Layout)</li>
-                                <li>Wireframing & Prototyping</li>
-                                <li>Typography & Layout</li>
-                                <li>Design Systems</li>
-                            </ul>
+                <div class="split-content">
+                    <div class="text-col">
+                        <p>I'm a frontend developer and UI designer who believes simplicity creates better digital products. I pay close attention to layout, spacing, typography, and responsiveness.</p>
+                        <p>I prefer writing clean and maintainable code, and building reusable UI components. Quality over quantity is my approach to every project.</p>
+                    </div>
+                    <div class="tool-col">
+                        <h3>Stack & Tools</h3>
+                        <div class="tool-grid">
+                            <span class="tool-item">VS Code</span>
+                            <span class="tool-item">Figma</span>
+                            <span class="tool-item">Git</span>
+                            <span class="tool-item">Chrome DevTools</span>
+                            <span class="tool-item">Vercel</span>
+                            <span class="tool-item">React</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 4. CONTACT SECTION (Spotify Dark Immersive) -->
-        <section id="contact" class="section-contact">
-            <div class="container contact-box">
-                <div class="contact-content">
-                    <h2>Ready to bring your idea to life?</h2>
+            <!-- 4. CONTACT SECTION -->
+            <section id="contact" class="contact-block">
+                <div class="contact-inner">
+                    <h2>Ready to build?</h2>
                     <p>Feel free to reach out for collaborations or just a friendly chat.</p>
                     <a href="#" class="btn-primary-dark">Connect on Instagram</a>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 5. FOOTER (Minimalist) -->
+        </main>
+
+        <!-- FOOTER -->
         <footer class="footer">
-            <div class="container footer-grid">
-                <div class="footer-brand">Hanaf.</div>
-                <div class="footer-nav">
+            <div class="footer-content">
+                <div class="brand-small">H.</div>
+                <div class="footer-links">
                     <a href="#">GitHub</a>
                     <a href="#">Dribbble</a>
                     <a href="#">Instagram</a>
                 </div>
-                <div class="footer-copy">&copy; 2026 Hanaf. Built with care.</div>
+                <div class="copyright">&copy; 2026 Hanaf.</div>
             </div>
         </footer>
-    </main>
+
+    </div>
 
     <script src="script.js"></script>
 </body>
