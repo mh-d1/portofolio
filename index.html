@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Frontend Developer & UI Designer</title>
+    <title>Dilan. | Portfolio Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,192 +11,200 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">A.R.</a>
-            <ul class="nav-menu">
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="btn-primary">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <div class="app-wrapper">
+        
+        <!-- Sidebar Navigation (Ref: iDraft Dashboard) -->
+        <aside class="sidebar">
+            <div class="logo-area">Dilan.</div>
+            
+            <nav class="side-nav">
+                <a href="#hero" class="active"><span class="icon">⌂</span> Overview</a>
+                <a href="#projects"><span class="icon">▦</span> Projects</a>
+                <a href="#gallery"><span class="icon">◆</span> Gallery</a>
+                <a href="#about"><span class="icon">⊞</span> About</a>
+            </nav>
 
-    <!-- 1. Hero Section -->
-    <header id="hero">
-        <div class="container hero-layout">
-            <div class="hero-text">
-                <h1>Designing & building <span class="highlight">usable</span> interfaces.</h1>
-                <p>I'm a frontend developer and UI designer based in Jakarta. I focus on creating editorially-driven layouts with a strong emphasis on whitespace, typography, and functional beauty.</p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn-primary">View Projects</a>
-                    <a href="#about" class="btn-secondary">About Me</a>
+            <div class="sidebar-footer">
+                <a href="#contact" class="btn-primary mobile-full">Let's Talk</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Top Header / User Profile (Ref: Logistic/Dashboard UI) -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search portfolio...">
                 </div>
-            </div>
-            <div class="hero-cards">
-                <div class="floating-card card-1"><div class="img-placeholder"></div></div>
-                <div class="floating-card card-2"><div class="img-placeholder"></div></div>
-                <div class="floating-card card-3"><div class="img-placeholder"></div></div>
-            </div>
-        </div>
-    </header>
+                <div class="user-profile">
+                    <span class="notif-dot"></span>
+                    <div class="avatar">D</div>
+                </div>
+            </header>
 
-    <!-- 2. Featured Projects -->
-    <section id="projects" class="section-pad">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Large Card -->
-                <article class="project-card large">
-                    <div class="card-image"><div class="img-placeholder"></div></div>
-                    <div class="card-content">
-                        <span class="category">Platform / 2024</span>
-                        <h3>Editorial Dashboard</h3>
-                        <p>A publishing interface that prioritizes reading flow and asset management for content creators.</p>
-                        <div class="tags">
-                            <span>React</span><span>TypeScript</span><span>CSS Grid</span>
+            <!-- 1. HERO / OVERVIEW (Ref: iDraft Dashboard Stats) -->
+            <section id="hero" class="section-pad-top">
+                <h1 class="welcome-title">Hi, I'm Dilan.</h1>
+                
+                <div class="dashboard-grid">
+                    <!-- Large Statistics Card (Dark Background) -->
+                    <div class="dash-card stat-card dark-card">
+                        <div class="stat-header">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-label">Years Exp.</span>
                         </div>
-                        <a href="#" class="view-project">View Project &rarr;</a>
-                    </div>
-                </article>
-
-                <!-- Small Card -->
-                <article class="project-card small">
-                    <div class="card-image"><div class="img-placeholder"></div></div>
-                    <div class="card-content">
-                        <span class="category">E-Commerce / 2023</span>
-                        <h3>Maroon Market</h3>
-                        <p>Minimalist shopping experience with an advanced filtering system.</p>
-                        <div class="tags">
-                            <span>Next.js</span><span>Tailwind</span>
+                        <div class="stat-progress">
+                            <span>Expertise</span>
+                            <div class="progress-bar"><div class="fill" style="width: 85%;"></div></div>
                         </div>
-                        <a href="#" class="view-project">View Project &rarr;</a>
-                    </div>
-                </article>
-
-                <!-- Vertical Tall Card -->
-                <article class="project-card tall">
-                    <div class="card-image"><div class="img-placeholder"></div></div>
-                    <div class="card-content">
-                        <span class="category">Mobile / 2024</span>
-                        <h3>Travel Journal</h3>
-                        <p>Responsive web app for logging travel memories with offline support.</p>
-                        <div class="tags">
-                            <span>Vue</span><span>Pinia</span>
+                        <div class="stat-sub-grid">
+                            <div class="sub-stat">
+                                <span class="num">15</span>
+                                <span class="label">Projects</span>
+                            </div>
+                            <div class="sub-stat">
+                                <span class="num">4</span>
+                                <span class="label">Ongoing</span>
+                            </div>
                         </div>
-                        <a href="#" class="view-project">View Project &rarr;</a>
                     </div>
-                </article>
-            </div>
-        </div>
-    </section>
 
-    <!-- 4. Design Gallery -->
-    <section id="gallery" class="section-pad bg-cream">
-        <div class="container">
-            <h2 class="section-title">Design Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><div class="img-placeholder" style="height: 250px;"></div></div>
-                <div class="gallery-item"><div class="img-placeholder" style="height: 400px;"></div></div>
-                <div class="gallery-item"><div class="img-placeholder" style="height: 300px;"></div></div>
-                <div class="gallery-item"><div class="img-placeholder" style="height: 350px;"></div></div>
-                <div class="gallery-item"><div class="img-placeholder" style="height: 200px;"></div></div>
-                <div class="gallery-item"><div class="img-placeholder" style="height: 450px;"></div></div>
-            </div>
-        </div>
-    </section>
+                    <!-- Weekly Stats / Graph Card -->
+                    <div class="dash-card graph-card">
+                        <div class="card-title">Activity</div>
+                        <div class="graph-placeholder">
+                            <svg viewBox="0 0 100 40">
+                                <path d="M0,35 L20,20 L40,30 L60,5 L80,15 L100,25" fill="none" stroke="#5A1E2A" stroke-width="2"/>
+                                <circle cx="60" cy="5" r="3" fill="#5A1E2A"/>
+                            </svg>
+                        </div>
+                        <div class="graph-legend">
+                            <span>Design</span> <span>Code</span>
+                        </div>
+                    </div>
 
-    <!-- 5. About Me -->
-    <section id="about" class="section-pad">
-        <div class="container split-layout">
-            <div class="split-left">
-                <h2 class="section-title">About me</h2>
-                <p>I don't just build websites; I craft editorial experiences. With a background in graphic design and a passion for clean code, I bridge the gap between visual storytelling and technical performance.</p>
-                <p>I believe that good design is invisible, and the best interfaces are the ones you don't notice because they just work.</p>
-            </div>
-            <div class="split-right">
-                <div class="skill-card">
-                    <h4>My Toolkit</h4>
-                    <div class="skills-grid">
-                        <span>React</span><span>TypeScript</span><span>Next.js</span>
-                        <span>Figma</span><span>Adobe XD</span><span>CSS3</span>
-                        <span>GSAP</span><span>Storybook</span>
+                    <!-- Monthly Goal / Task Card -->
+                    <div class="dash-card task-card">
+                        <div class="card-title">Monthly Goals</div>
+                        <ul class="task-list">
+                            <li class="checked"><span>✓</span> Launch Portfolio V3</li>
+                            <li><span>○</span> 5 New Dribbble Shots</li>
+                            <li><span>○</span> Client Meeting Prep</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="experience-card">
-                    <h4>Experience</h4>
-                    <div class="exp-item">
-                        <span class="exp-role">Lead Designer</span>
-                        <span class="exp-company">Studio Maroon</span>
-                        <span class="exp-date">2022 - Present</span>
+            </section>
+
+            <!-- 2. PROJECTS (Ref: Logistic List + Card UI) -->
+            <section id="projects" class="section-pad">
+                <div class="flex-header">
+                    <h2 class="section-title">Recent Projects</h2>
+                    <a href="#" class="btn-outline">View All →</a>
+                </div>
+
+                <div class="projects-dash-grid">
+                    <!-- Large Project Card -->
+                    <div class="project-card large-card">
+                        <div class="project-img"></div>
+                        <div class="project-info">
+                            <h3>Travel Log Dashboard</h3>
+                            <span class="status in-progress">In Progress</span>
+                            <p>Interactive trip tracking UI with map integration and itinerary management.</p>
+                            <div class="tech-tags">
+                                <span>React</span> <span>Mapbox</span> <span>Tailwind</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="exp-item">
-                        <span class="exp-role">Frontend Dev</span>
-                        <span class="exp-company">Creative Agency</span>
-                        <span class="exp-date">2019 - 2022</span>
+
+                    <!-- Medium Project Card -->
+                    <div class="project-card medium-card">
+                        <div class="project-img"></div>
+                        <div class="project-info compact">
+                            <h3>Maroon E-Com</h3>
+                            <span class="status completed">Completed</span>
+                        </div>
+                    </div>
+
+                    <!-- Small List Item (Text-heavy) -->
+                    <div class="project-card list-card">
+                        <div class="list-item">
+                            <div class="list-icon">📦</div>
+                            <div>
+                                <h4>Asset Management</h4>
+                                <p>Design system for creators</p>
+                            </div>
+                            <span class="status pending">Pending</span>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon">📄</div>
+                            <div>
+                                <h4>Editorial UI Kit</h4>
+                                <p>Figma component library</p>
+                            </div>
+                            <span class="status in-progress">Active</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- 6. Process Section -->
-    <section id="process" class="section-pad bg-cream">
-        <div class="container">
-            <h2 class="section-title">My Process</h2>
-            <div class="process-flex">
-                <div class="process-step">
-                    <span class="step-num">01</span>
-                    <h4>Discover</h4>
-                    <p>Understanding the core problem and audience behavior.</p>
+            <!-- 3. GALLERY (Ref: Mobile UI Cards) -->
+            <section id="gallery" class="section-pad bg-off-white">
+                <h2 class="section-title">Design Gallery</h2>
+                <div class="gallery-grid-dash">
+                    <div class="gallery-item large-gallery"><span>Mobile App</span></div>
+                    <div class="gallery-item small-gallery"><span>Website</span></div>
+                    <div class="gallery-item tall-gallery"><span>Dashboard</span></div>
+                    <div class="gallery-item small-gallery"><span>Branding</span></div>
                 </div>
-                <div class="process-step">
-                    <span class="step-num">02</span>
-                    <h4>Design</h4>
-                    <p>Wireframing and high-fidelity UI designed for readability.</p>
-                </div>
-                <div class="process-step">
-                    <span class="step-num">03</span>
-                    <h4>Develop</h4>
-                    <p>Writing semantic, responsive code with smooth interactions.</p>
-                </div>
-                <div class="process-step">
-                    <span class="step-num">04</span>
-                    <h4>Launch</h4>
-                    <p>Deploying and optimizing for performance and accessibility.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- 7. Contact Section -->
-    <section id="contact">
-        <div class="container contact-content">
-            <h2>Need something?</h2>
-            <p>DM me for something.</p>
-            <a href="#" class="btn-instagram">Instagram</a>
-        </div>
-    </section>
+            <!-- 4. ABOUT ME (Ref: Split UI Cards) -->
+            <section id="about" class="section-pad">
+                <div class="split-dash-layout">
+                    <div class="about-text-card">
+                        <h2>Behind the Code.</h2>
+                        <p>I architect digital products with a focus on visual clarity and interaction. Based in Jakarta, I bridge the gap between pixel-perfect design and performant code.</p>
+                        <div class="tools-used">
+                            <span>Figma</span> <span>React</span> <span>TypeScript</span> <span>Framer</span>
+                        </div>
+                    </div>
+                    <div class="experience-timeline-card">
+                        <div class="timeline-item">
+                            <span class="year">2023 - Now</span>
+                            <h4>Lead UI Engineer</h4>
+                            <p>Studio Maroon</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="year">2020 - 2023</span>
+                            <h4>Frontend Developer</h4>
+                            <p>Creative Digital Agency</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <!-- 8. Footer -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-logo">A.R.</div>
-            <ul class="footer-nav">
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-            <div class="copyright">&copy; 2026 A.R. All Rights Reserved.</div>
-        </div>
-    </footer>
+            <!-- 7. CONTACT -->
+            <section id="contact" class="section-pad">
+                <div class="cta-dark-card">
+                    <div class="cta-content">
+                        <h2>Need a partner?</h2>
+                        <p>Let's build something great together.</p>
+                        <a href="#" class="btn-primary mobile-full">DM on Instagram</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. FOOTER -->
+            <footer class="dash-footer">
+                <p>&copy; 2026 Dilan. All Rights Reserved.</p>
+                <div class="footer-nav-mini">
+                    <a href="#">Twitter</a> <a href="#">Dribbble</a> <a href="#">Github</a>
+                </div>
+            </footer>
+
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
