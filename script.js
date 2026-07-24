@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Sidebar Highlight on Scroll (Active state)
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.side-nav a');
+    // Highlight active link pada sidebar saat scroll
+    const sections = document.querySelectorAll('#overview, #projects, #gallery, #process, #about');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
 
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 150;
-            if (scrollY >= sectionTop) {
+            const sectionTop = section.offsetTop - 150; // offset untuk sticky header
+            if (window.scrollY >= sectionTop) {
                 current = section.getAttribute('id');
             }
         });
