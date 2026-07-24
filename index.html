@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Amanda's Design Lab</title>
+    <title>Hanaf | Frontend & UI Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,227 +11,199 @@
 </head>
 <body>
 
-    <!-- App Container: Membungkus Sidebar & Main Content seperti Dashboard -->
     <div class="app-container">
         
-        <!-- 1. Sidebar Navigation (Referensi Sidebar Be.run) -->
-        <aside class="app-sidebar">
-            <div class="logo-area">AD.</div>
+        <!-- 1. SIDEBAR -->
+        <aside class="app-sidebar" id="sidebar">
+            <div class="logo-area">Hanaf.</div>
             
             <nav class="sidebar-nav">
-                <a href="#overview" class="active"><span class="nav-icon">▣</span> Overview</a>
-                <a href="#projects"><span class="nav-icon">◆</span> Projects</a>
-                <a href="#gallery"><span class="nav-icon">□</span> Gallery</a>
-                <a href="#process"><span class="nav-icon">↻</span> Process</a>
-                <a href="#about"><span class="nav-icon">⊡</span> About</a>
+                <a href="#overview" class="active" data-target="overview"><span class="nav-icon">⌂</span> Overview</a>
+                <a href="#projects" data-target="projects"><span class="nav-icon">◆</span> Projects</a>
+                <a href="#skills" data-target="skills"><span class="nav-icon">▦</span> Skills</a>
+                <a href="#about" data-target="about"><span class="nav-icon">⊡</span> About</a>
             </nav>
 
             <div class="sidebar-footer">
-                <a href="#contact" class="btn-primary full-width">Hire Me</a>
+                <a href="#contact" class="btn-primary full-width animate-pulse-on-hover">Hire Me</a>
             </div>
         </aside>
 
-        <!-- 2. Main Content Area -->
+        <!-- 2. MAIN CONTENT -->
         <main class="app-main">
             
-            <!-- Header: Search & Profile (Referensi Header Be.run) -->
+            <!-- HEADER -->
             <header class="app-header" id="overview">
-                <h1 class="greeting">Hi, I'm Amanda.</h1>
+                <div class="header-title-group">
+                    <h1 class="greeting">Hi, I'm Hanaf.</h1>
+                    <span class="sub-greeting">Frontend Developer & UI Designer from Indonesia.</span>
+                </div>
                 <div class="header-actions">
-                    <div class="search-box">
-                        <input type="text" placeholder="Search projects...">
+                    <div class="theme-toggle" id="themeToggle">
+                        <span class="toggle-track">
+                            <span class="toggle-thumb"></span>
+                        </span>
                     </div>
-                    <div class="user-avatar">AM</div>
                 </div>
             </header>
 
-            <!-- ==================== GRID 1: HERO INTRO STATS ==================== -->
+            <!-- ==================== BLOCK 1: HERO & SPECIALTIES ==================== -->
             <div class="dashboard-grid-2">
-                <!-- Block A: Large Intro & Stats (Soft Maroon/Cream Background) -->
-                <div class="block-card hero-block">
+                
+                <!-- Intro Block -->
+                <div class="block-card hero-block fade-up">
                     <div class="hero-content">
-                        <h2>Crafting interfaces that feel <span class="highlight-maroon">human</span>.</h2>
-                        <p>Designing and developing premium digital experiences with a focus on typography, whitespace, and editorial aesthetics.</p>
-                        <div class="hero-stats-row">
-                            <div class="stat-circle">
-                                <span class="stat-num">7+</span>
-                                <span class="stat-label">Years Exp.</span>
-                            </div>
-                            <div class="stat-circle">
-                                <span class="stat-num">24</span>
-                                <span class="stat-label">Projects</span>
-                            </div>
+                        <h2>Turning ideas into <span class="highlight-maroon">clean, responsive</span> websites.</h2>
+                        <p class="natural-text">I enjoy building interfaces that are intuitive, accessible, and performant. I focus on layout, spacing, and typography. Simplicity creates better digital products.</p>
+                        
+                        <div class="hero-actions-group">
+                            <a href="#projects" class="btn-primary smooth-hover">View Work</a>
+                            <a href="#about" class="btn-outline smooth-hover">About Me</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Block B: Workout/Activity Replacement (Dark "Training" Calendar Style) -->
-                <div class="block-card dark-stats-card">
+                <!-- Interactive Specialties Slider Block -->
+                <div class="block-card specialties-card interactive-card fade-up">
                     <div class="card-header-mini">
-                        <span>Weekly Focus</span>
-                        <span class="badge-maroon">June</span>
+                        <span>Specialties</span>
+                        <span class="badge-maroon">Interactive</span>
                     </div>
-                    <div class="weekly-grid">
-                        <div class="day active">M</div>
-                        <div class="day">T</div>
-                        <div class="day">W</div>
-                        <div class="day">T</div>
-                        <div class="day done">F</div>
-                        <div class="day">S</div>
-                        <div class="day">S</div>
+                    
+                    <div class="specialties-slider-container">
+                        <div class="specialties-track" id="specTrack">
+                            <div class="spec-item">
+                                <span class="dot-fill"></span> Responsive Dev
+                            </div>
+                            <div class="spec-item">
+                                <span class="dot-fill"></span> Modern UI Design
+                            </div>
+                            <div class="spec-item">
+                                <span class="dot-fill"></span> Component-based UI
+                            </div>
+                            <div class="spec-item">
+                                <span class="dot-fill"></span> Performance Opt.
+                            </div>
+                        </div>
                     </div>
-                    <div class="mini-tasks">
-                        <div class="task-item">
-                            <span class="dot-fill"></span> <span>UI Research</span>
-                        </div>
-                        <div class="task-item">
-                            <span class="dot-outline"></span> <span>Dev Review</span>
-                        </div>
+                    <div class="slider-controls">
+                        <span>Drag to scroll</span>
+                        <div class="scroll-indicator"><div class="scroll-thumb"></div></div>
                     </div>
                 </div>
             </div>
 
-            <!-- ==================== GRID 2: PROJECTS (Seperti Habits & Steps) ==================== -->
+            <!-- ==================== BLOCK 2: PROJECTS & SKILLS SLIDER ==================== -->
             <section id="projects" class="section-pad">
                 <div class="section-header">
-                    <h2>Active Projects</h2>
-                    <a href="#" class="btn-outline">View All</a>
+                    <h2>Recent Projects</h2>
                 </div>
 
                 <div class="project-layout-grid">
-                    <!-- List Projects (Seperti "My Habits" section) -->
-                    <div class="block-card list-card">
-                        <div class="list-item">
+                    <!-- Project List (Smooth hover states) -->
+                    <div class="block-card list-card fade-up">
+                        <div class="list-item interactive-row">
                             <div class="list-icon">📦</div>
                             <div class="list-info">
-                                <h4>Maroon E-Commerce</h4>
-                                <span class="sub-text">Next.js, Tailwind</span>
+                                <h4>E-Commerce Dashboard</h4>
+                                <span class="sub-text">React, CSS Modules</span>
                             </div>
-                            <div class="list-progress">
-                                <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
-                                <span class="progress-text">9/12</span>
-                            </div>
+                            <span class="status-badge">Live</span>
                         </div>
-                        <div class="list-item">
+                        <div class="list-item interactive-row">
                             <div class="list-icon">🎨</div>
                             <div class="list-info">
                                 <h4>Design System Lab</h4>
                                 <span class="sub-text">Figma, Storybook</span>
                             </div>
-                            <div class="list-progress">
-                                <div class="progress-track"><div class="progress-fill" style="width: 45%;"></div></div>
-                                <span class="progress-text">5/11</span>
-                            </div>
+                            <span class="status-badge">WIP</span>
                         </div>
-                        <div class="list-item border-none">
+                        <div class="list-item interactive-row border-none">
                             <div class="list-icon">✈️</div>
                             <div class="list-info">
-                                <h4>Travel Journal App</h4>
-                                <span class="sub-text">React Native</span>
+                                <h4>Personal Blog UI</h4>
+                                <span class="sub-text">Next.js, Tailwind</span>
                             </div>
-                            <div class="list-progress">
-                                <div class="progress-track"><div class="progress-fill" style="width: 20%;"></div></div>
-                                <span class="progress-text">2/10</span>
-                            </div>
+                            <span class="status-badge">Done</span>
                         </div>
                     </div>
 
-                    <!-- Progress Card (Seperti "Weight Loss Plan") -->
-                    <div class="block-card goal-card">
+                    <!-- Interactive "Skill Level" Slider -->
+                    <div class="block-card skill-slider-card fade-up">
                         <div class="card-header-mini">
-                            <span>Project Status</span>
-                            <span class="progress-percent">68%</span>
+                            <span>Skill Confidence</span>
                         </div>
-                        <div class="goal-visual">
-                            <div class="goal-slider-track">
-                                <div class="goal-slider-fill" style="width: 68%;"></div>
-                                <div class="slider-pin" style="left: 68%;">8</div>
-                            </div>
-                            <div class="goal-labels">
-                                <span>0 Done</span>
-                                <span>12 Total</span>
+                        <p class="small-note">Drag to see where I stand.</p>
+                        
+                        <div class="skill-slider-group">
+                            <span class="skill-label">Frontend</span>
+                            <div class="drag-slider track" data-skill="frontend">
+                                <div class="fill" style="width: 80%;"></div>
+                                <div class="thumb" style="left: 80%;" draggable="true">⏺</div>
                             </div>
                         </div>
-                        <div class="goal-cta">
-                            <span>Next Milestone</span>
-                            <button class="btn-small-maroon">Review</button>
+
+                        <div class="skill-slider-group">
+                            <span class="skill-label">UI Design</span>
+                            <div class="drag-slider track" data-skill="ui">
+                                <div class="fill" style="width: 70%;"></div>
+                                <div class="thumb" style="left: 70%;" draggable="true">⏺</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ==================== GRID 3: GALLERY (Masonry Cards) ==================== -->
-            <section id="gallery" class="section-pad">
-                <div class="section-header">
-                    <h2>Design Gallery</h2>
-                    <a href="#" class="btn-outline">Dribbble</a>
-                </div>
-
-                <div class="gallery-grid-boxes">
-                    <div class="gallery-box tall-box"><span>Mobile UI</span></div>
-                    <div class="gallery-box wide-box"><span>Dashboard</span></div>
-                    <div class="gallery-box square-box"><span>Logo</span></div>
-                    <div class="gallery-box wide-box"><span>Landing Page</span></div>
-                    <div class="gallery-box tall-box"><span>Editorial</span></div>
-                </div>
-            </section>
-
-            <!-- ==================== GRID 4: PROCESS & ABOUT (Split) ==================== -->
-            <div class="split-50-50 section-pad" id="process">
-                <!-- Process -->
-                <div class="block-card process-card">
-                    <h3>My Workflow</h3>
-                    <div class="process-steps">
-                        <div class="step">
-                            <span class="step-num">01</span>
-                            <div>
-                                <h4>Discover</h4>
-                                <p>User research & problem framing.</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <span class="step-num">02</span>
-                            <div>
-                                <h4>Design</h4>
-                                <p>Wireframing & high-fidelity UI.</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <span class="step-num">03</span>
-                            <div>
-                                <h4>Build</h4>
-                                <p>Clean, semantic, responsive code.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- About -->
-                <div class="block-card about-card" id="about">
+            <!-- ==================== BLOCK 3: ABOUT, TOOLS & WORK STYLE ==================== -->
+            <div class="split-50-50 section-pad" id="about">
+                
+                <!-- About Card -->
+                <div class="block-card about-card fade-up">
                     <h3>About Me</h3>
-                    <p>I'm a UI Designer & Frontend Developer based in Jakarta. I specialize in bridging the gap between high-end visual design and functional, performant code.</p>
-                    <div class="skill-tags">
-                        <span>Figma</span><span>React</span><span>TypeScript</span><span>CSS Grid</span><span>Framer</span>
+                    <p class="natural-text">I'm a Frontend Developer & UI Designer with 2+ years of experience based in Indonesia. I enjoy solving UI problems and continuously learning better ways to design and develop interfaces.</p>
+                    <p class="natural-text">I value consistency, clean code, and performance before adding visual effects.</p>
+                    
+                    <div class="work-style-box">
+                        <h4>Work Style</h4>
+                        <ul>
+                            <li>Reusable UI components</li>
+                            <li>Clean & maintainable code</li>
+                            <li>Quality over quantity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tools & Stack Card -->
+                <div class="block-card tools-card fade-up">
+                    <h3>Tools & Stack</h3>
+                    <div class="tools-grid">
+                        <div class="tool-item">HTML5</div>
+                        <div class="tool-item">CSS3</div>
+                        <div class="tool-item">JavaScript (ES6+)</div>
+                        <div class="tool-item">Flexbox & Grid</div>
+                        <div class="tool-item">Figma</div>
+                        <div class="tool-item">Git & GitHub</div>
+                        <div class="tool-item">Vercel</div>
+                        <div class="tool-item">Chrome DevTools</div>
                     </div>
                 </div>
             </div>
 
-            <!-- ==================== CONTACT (Dark Section) ==================== -->
-            <section id="contact" class="contact-cta-block">
+            <!-- ==================== BLOCK 4: CONTACT & FOOTER ==================== -->
+            <section id="contact" class="contact-cta-block fade-up">
                 <div class="cta-content">
-                    <h2>Let's build something <span class="highlight-white">together</span>.</h2>
-                    <p>DM me on Instagram for project inquiries.</p>
-                    <a href="#" class="btn-primary-dark">Instagram</a>
+                    <h2>Have a project in mind?</h2>
+                    <p>DM me on Instagram for project inquiries or just to say hi.</p>
+                    <a href="#" class="btn-primary-dark smooth-hover bounce-on-hover">Instagram</a>
                 </div>
             </section>
 
-            <!-- ==================== FOOTER ==================== -->
             <footer class="app-footer">
-                <div class="footer-left">&copy; 2026 Amanda Design Lab.</div>
+                <div class="footer-left">&copy; 2026 Hanaf. All Rights Reserved.</div>
                 <div class="footer-right">
-                    <a href="#">Twitter</a>
                     <a href="#">GitHub</a>
                     <a href="#">Dribbble</a>
+                    <a href="#">Instagram</a>
                 </div>
             </footer>
 
