@@ -1,125 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Active Link Highlight on Scroll
-    const sections = document.querySelectorAll('section[id], header[id]');
-    const navLinks = document.querySelectorAll('.sidebar-nav a');
-
+    // --- 1. Sticky Navbar (Vercel behavior) ---
+    const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 200;
-            if (scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
-        });
+        if (window.scrollY > 80) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-target') === current) {
-                link.classList.add('active');
-            }
+    // --- 2. Mobile Menu Toggle ---
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        // Animate hamburger lines
+        const spans = menuBtn.querySelectorAll('span');
+        spans.forEach(span => span.classList.toggle('active'));
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
         });
     });
 
-    // 2. Playful Theme Toggle (Mockup)
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-        themeToggle.classList.toggle('active');
-    });
-
-    // 3. Drag Interaction for Skill Sliders
-    const sliders = document.querySelectorAll('.drag-slider');
-
-    sliders.forEach(slider => {
-        const thumb = slider.querySelector('.thumb');
-        const fill = slider.querySelector('.fill');
-        let isDragging = false;
-
-        const updateSlider = (clientX) => {
-            const rect = slider.getBoundingClientRect();
-            let x = clientX - rect.left;
-            let percent = (x / rect.width) * 100;
+    // --- 3. Interactive Project Filter (Playful toggle) ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active from all
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active to clicked
+            btn.classList.add('active');
             
-            // Clamp between 0 and 100
-            percent = Math.max(0, Math.min(100, percent));
-            
-            fill.style.width = percent + '%';
-            thumb.style.left = percent + '%';
-        };
-
-        thumb.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            thumb.style.cursor = 'grabbing';
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            updateSlider(e.clientX);
-        });
-
-        document.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                thumb.style.cursor = 'grab';
-            }
-        });
-
-        // Allow clicking on the track to jump
-        slider.addEventListener('mousedown', (e) => {
-            if (e.target === thumb) return; // Don't trigger if clicking thumb directly
-            updateSlider(e.clientX);
+            // Add a playful "pop" effect
+            btn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+            }, 150);
         });
     });
 
-    // 4. Drag to scroll for Specialties (Horizontal track)
-    const specTrack = document.getElementById('specTrack');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    specTrack.addEventListener('mousedown', (e) => {
-        isDown = true;
-        specTrack.style.cursor = 'grabbing';
-        startX = e.pageX - specTrack.offsetLeft;
-        scrollLeft = specTrack.scrollLeft;
-    });
-
-    document.addEventListener('mouseleave', () => {
-        isDown = false;
-        specTrack.style.cursor = 'grab';
-    });
-
-    document.addEventListener('mouseup', () => {
-        isDown = false;
-        specTrack.style.cursor = 'grab';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - specTrack.offsetLeft;
-        const walk = (x - startX) * 2; // Scroll speed
-        specTrack.scrollLeft = scrollLeft - walk;
-    });
-
-    // 5. Intersection Observer for Fade-up animations
+    // --- 4. Intersection Observer for scroll reveals (Apple-like fade) ---
     const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: "0px"
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-up').forEach(el => {
+    // Select elements to animate
+    const elements = document.querySelectorAll('.project-card, .about-text, .skills-block, .hero-text');
+    elements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)';
         observer.observe(el);
     });
 });
