@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanaf | Black & Bold Design</title>
+    <title>Hanaf | Frontend & UI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -11,191 +11,154 @@
 </head>
 <body>
 
-    <!-- MAIN WRAPPER (Gap ke pinggir layar) -->
+    <!-- WRAPPER UTAMA (Membuat jarak dari pinggir layar) -->
     <div class="app-wrapper">
         
-        <!-- HEADER (Logo & Hamburger Kiri) -->
-        <header class="header">
-            <div class="header-left">
-                <div class="brand-logo">H.</div>
-                <!-- Titik Tiga / Hamburger Menu -->
-                <button class="hamburger-btn" id="menuToggle" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        <!-- NAVIGATION -->
+        <header class="navbar">
+            <div class="nav-left">
+                <div class="logo">H.</div>
+                <!-- Tombol Hamburger (Titik Tiga) -->
+                <button class="menu-btn" id="menuToggle" aria-label="Buka Menu">
+                    <span></span><span></span><span></span>
                 </button>
             </div>
             
-            <nav class="desktop-nav">
-                <a href="#works" class="nav-link">Works</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="btn-primary">Contact</a>
+            <nav class="nav-right" id="desktopNav">
+                <a href="#works" class="nav-link">Karya</a>
+                <a href="#about" class="nav-link">Tentang</a>
+                <a href="#contact" class="btn-primary">Kontak</a>
             </nav>
         </header>
 
-        <!-- SIDEBAR POPUP (Desktop: Pop-up di sebelah kiri. Mobile: Slide-in) -->
+        <!-- SIDEBAR POPUP (Desktop pop-up kiri, Mobile slide-in kanan) -->
         <aside class="side-panel" id="sidePanel">
             <div class="panel-header">
-                <span class="panel-title">Menu</span>
+                <span class="panel-title">Navigasi</span>
                 <button class="close-panel" id="closePanel">✕</button>
             </div>
-            
-            <!-- Filter UI ala Hioline -->
-            <div class="filter-group">
-                <h3>Category</h3>
-                <div class="input-pill">
-                    <span>Frontend</span>
-                    <span class="arrow">→</span>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <h3>Stack</h3>
-                <div class="filter-options">
-                    <div class="option-item">
-                        <div class="circle-icon blue"></div>
-                        <span>React</span>
-                        <span class="arrow">→</span>
-                    </div>
-                    <div class="option-item">
-                        <div class="circle-icon green"></div>
-                        <span>Vue</span>
-                        <span class="arrow">→</span>
-                    </div>
-                    <div class="option-item">
-                        <div class="circle-icon gray"></div>
-                        <span>Next.js</span>
-                        <span class="arrow">→</span>
-                    </div>
-                    <a href="#" class="more-link">+12 more</a>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <h3>Role</h3>
-                <div class="dropdown-pill">
-                    <span>Show more</span>
-                    <span class="chevron">⌄</span>
-                </div>
-                <div class="dropdown-pill">
-                    <span>Designer</span>
-                    <span class="chevron">⌄</span>
-                </div>
-            </div>
-
+            <nav class="panel-nav">
+                <a href="#works" class="panel-link">Karya</a>
+                <a href="#about" class="panel-link">Tentang</a>
+                <a href="#contact" class="panel-link">Kontak</a>
+            </nav>
             <div class="panel-footer">
-                <button class="btn-block-black">Apply Filters</button>
+                <button class="btn-block-black">Hubungi Saya</button>
             </div>
         </aside>
 
-        <!-- OVERLAY (Untuk menutup panel saat klik di luar) -->
+        <!-- OVERLAY (Menutup popup saat klik di luar) -->
         <div class="overlay" id="overlay"></div>
 
-        <!-- MAIN CONTENT AREA -->
-        <main class="main-content">
+        <!-- MAIN CONTENT -->
+        <main>
             
             <!-- 1. HERO SECTION -->
             <section class="hero">
                 <div class="hero-content">
-                    <span class="badge">Frontend & UI</span>
-                    <h1>Building bold, <span class="highlight-blue">functional</span> interfaces.</h1>
-                    <p>I'm Hanaf. I focus on clean code, accessible interfaces, and giving every pixel a purpose. Based in Indonesia with 2+ years of experience.</p>
-                    <div class="hero-actions">
-                        <a href="#works" class="btn-primary">View Projects</a>
-                        <a href="#about" class="btn-outline-light">About Me</a>
+                    <div class="badge-hitam">Frontend & UI Designer</div>
+                    <h1>Membangun antarmuka yang <span class="text-biru">fungsional</span> dan <span class="text-hijau">bersih</span>.</h1>
+                    <p>Saya Hanaf, seorang Frontend Developer dan UI Designer asal Indonesia. Saya fokus pada kode yang rapi, aksesibilitas, dan memberikan tujuan pada setiap piksel.</p>
+                    <div class="hero-action">
+                        <a href="#works" class="btn-primary">Lihat Karya</a>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. PROJECTS GRID (Vercel style) -->
+            <!-- 2. FEATURED WORKS (Dua Bagian Proyek) -->
             <section id="works" class="section-block">
-                <div class="section-header">
+                <div class="section-head">
                     <h2>Featured Works</h2>
-                    <div class="filters">
-                        <button class="filter-btn active">All</button>
-                        <button class="filter-btn">Dev</button>
-                        <button class="filter-btn">UI</button>
-                    </div>
                 </div>
 
-                <div class="projects-grid">
-                    <!-- Card 1 -->
+                <!-- Baris Proyek 1 -->
+                <div class="project-row">
                     <article class="project-card">
-                        <div class="card-img bg-blue"></div>
-                        <div class="card-content">
-                            <div class="tags">
+                        <div class="card-img bg-biru"></div>
+                        <div class="card-body">
+                            <div class="card-tags">
                                 <span>React</span><span>Vercel</span>
                             </div>
-                            <h3>E-Com Dashboard</h3>
-                            <p>High-performance dashboard with advanced filtering.</p>
-                            <div class="project-status">
-                                <span class="status-dot green"></span> In Progress
-                            </div>
+                            <h3>Dashboard E-Commerce</h3>
+                            <p>Dashboard performa tinggi dengan fitur filtering lanjutan dan visualisasi data real-time.</p>
                         </div>
                     </article>
 
-                    <!-- Card 2 -->
                     <article class="project-card">
-                        <div class="card-img bg-green"></div>
-                        <div class="card-content">
-                            <div class="tags">
-                                <span>Figma</span><span>System</span>
+                        <div class="card-img bg-hijau"></div>
+                        <div class="card-body">
+                            <div class="card-tags">
+                                <span>Figma</span><span>Design System</span>
                             </div>
                             <h3>Maroon Design Lab</h3>
-                            <p>Cohesive component library for multiple platforms.</p>
-                            <div class="project-status">
-                                <span class="status-dot blue"></span> Completed
-                            </div>
+                            <p>Pustaka komponen UI yang kohesif untuk menjaga konsistensi antar platform.</p>
                         </div>
                     </article>
 
-                    <!-- Card 3 -->
-                    <article class="project-card wide">
-                        <div class="card-img bg-gray"></div>
-                        <div class="card-content">
-                            <div class="tags">
+                    <article class="project-card">
+                        <div class="card-img bg-abu"></div>
+                        <div class="card-body">
+                            <div class="card-tags">
                                 <span>Next.js</span><span>Tailwind</span>
                             </div>
-                            <h3>Editorial Blog UI</h3>
-                            <p>Typography-focused blog platform with custom CMS integration.</p>
-                            <div class="project-status">
-                                <span class="status-dot green"></span> Live
+                            <h3>Blog Editorial</h3>
+                            <p>Platform blog yang berfokus pada tipografi dengan integrasi CMS kustom.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Baris Proyek 2 -->
+                <div class="project-row">
+                    <article class="project-card wide">
+                        <div class="card-img bg-biru-muda"></div>
+                        <div class="card-body">
+                            <div class="card-tags">
+                                <span>Mobile First</span><span>PWA</span>
                             </div>
+                            <h3>Aplikasi Jurnal Perjalanan</h3>
+                            <p>Web app mobile-first yang dirancang untuk mencatat kenangan perjalanan dengan dukungan offline.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="card-img bg-hitam-soft"></div>
+                        <div class="card-body">
+                            <div class="card-tags">
+                                <span>Redesign</span><span>UI/UX</span>
+                            </div>
+                            <h3>Redesign Platform Edukasi</h3>
+                            <p>Menyegarkan tampilan dan pengalaman pengguna platform belajar online agar lebih intuitif.</p>
                         </div>
                     </article>
                 </div>
             </section>
 
             <!-- 3. ABOUT SECTION -->
-            <section id="about" class="section-block split-section">
-                <div class="section-header">
-                    <h2>About Me</h2>
+            <section id="about" class="section-block">
+                <div class="section-head">
+                    <h2>Tentang Saya</h2>
                 </div>
-                <div class="split-content">
-                    <div class="text-col">
-                        <p>I'm a frontend developer and UI designer who believes simplicity creates better digital products. I pay close attention to layout, spacing, typography, and responsiveness.</p>
-                        <p>I prefer writing clean and maintainable code, and building reusable UI components. Quality over quantity is my approach to every project.</p>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Saya percaya bahwa kesederhanaan menciptakan produk digital yang lebih baik. Saya sangat memperhatikan layout, jarak antar elemen, tipografi, dan responsivitas.</p>
+                        <p>Saya lebih suka menulis kode yang bersih dan mudah dipelihara, serta membangun komponen UI yang dapat digunakan kembali.</p>
                     </div>
-                    <div class="tool-col">
-                        <h3>Stack & Tools</h3>
-                        <div class="tool-grid">
-                            <span class="tool-item">VS Code</span>
-                            <span class="tool-item">Figma</span>
-                            <span class="tool-item">Git</span>
-                            <span class="tool-item">Chrome DevTools</span>
-                            <span class="tool-item">Vercel</span>
-                            <span class="tool-item">React</span>
+                    <div class="about-tools">
+                        <h3>Tools & Stack</h3>
+                        <div class="tool-list">
+                            <span>VS Code</span><span>Figma</span><span>Git</span>
+                            <span>Chrome DevTools</span><span>Vercel</span>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- 4. CONTACT SECTION -->
-            <section id="contact" class="contact-block">
-                <div class="contact-inner">
-                    <h2>Ready to build?</h2>
-                    <p>Feel free to reach out for collaborations or just a friendly chat.</p>
-                    <a href="#" class="btn-primary-dark">Connect on Instagram</a>
+            <section id="contact" class="contact-section">
+                <div class="contact-box">
+                    <h2>Siap membangun sesuatu?</h2>
+                    <p>Jangan ragu untuk menghubungi saya untuk kolaborasi atau sekadar menyapa.</p>
+                    <a href="#" class="btn-white">DM di Instagram</a>
                 </div>
             </section>
 
@@ -203,14 +166,14 @@
 
         <!-- FOOTER -->
         <footer class="footer">
-            <div class="footer-content">
-                <div class="brand-small">H.</div>
-                <div class="footer-links">
+            <div class="footer-inner">
+                <span class="footer-logo">H.</span>
+                <div class="footer-social">
                     <a href="#">GitHub</a>
                     <a href="#">Dribbble</a>
                     <a href="#">Instagram</a>
                 </div>
-                <div class="copyright">&copy; 2026 Hanaf.</div>
+                <span class="footer-copy">&copy; 2026 Hanaf.</span>
             </div>
         </footer>
 
