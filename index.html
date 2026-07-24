@@ -3,181 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanaf | Frontend & UI</title>
+    <title>Hanaf | Digital Product Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- WRAPPER UTAMA (Membuat jarak dari pinggir layar) -->
-    <div class="app-wrapper">
+    
+    <!-- LAYER BACKGROUND HITAM PEKAT -->
+    <div class="app-backdrop">
         
-        <!-- NAVIGATION -->
-        <header class="navbar">
-            <div class="nav-left">
-                <div class="logo">H.</div>
-                <!-- Tombol Hamburger (Titik Tiga) -->
-                <button class="menu-btn" id="menuToggle" aria-label="Buka Menu">
-                    <span></span><span></span><span></span>
+        <!-- MAIN WRAPPER (Kartu Putih yang melayang) -->
+        <div class="app-wrapper">
+            
+            <!-- HEADER -->
+            <header class="navbar">
+                <div class="brand">Hanaf.</div>
+                <div class="nav-group">
+                    <nav class="desktop-nav">
+                        <a href="#works" class="nav-link">Projects</a>
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#contact" class="btn-primary">Contact</a>
+                    </nav>
+                    
+                    <!-- Tombol Titik Tiga (⋮) -->
+                    <button class="kebab-btn" id="menuToggle" aria-label="Menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- POPUP MENU (Muncul sejajar dengan titik tiga) -->
+            <div class="popup-menu" id="popupMenu">
+                <nav class="popup-links">
+                    <a href="#works" class="popup-item">Projects</a>
+                    <a href="#about" class="popup-item">About</a>
+                    <a href="#contact" class="popup-item">Contact</a>
+                </nav>
+            </div>
+
+            <!-- OVERLAY GELAP (Untuk menutup popup) -->
+            <div class="overlay" id="overlay"></div>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                
+                <!-- 1. HERO SECTION -->
+                <section class="hero">
+                    <div class="hero-badge">Frontend & UI Designer</div>
+                    <h1 class="hero-title">Crafting interfaces with <span class="text-blue">precision</span> and <span class="text-green">intent</span>.</h1>
+                    <p class="hero-desc">I'm Hanaf. I focus on clean code, accessibility, and building digital products that feel alive. Based in Indonesia.</p>
+                    <div class="hero-actions">
+                        <a href="#works" class="btn-primary">Explore Work</a>
+                    </div>
+                </section>
+
+                <!-- 2. PROJECTS (Featured Works) -->
+                <section id="works" class="section-grid">
+                    <div class="section-header">
+                        <h2>Featured Projects</h2>
+                    </div>
+
+                    <!-- Row 1 -->
+                    <div class="project-row">
+                        <article class="project-card fade-up">
+                            <div class="card-preview bg-blue"></div>
+                            <div class="card-details">
+                                <div class="tags"><span>React</span><span>Vercel</span></div>
+                                <h3>E-Commerce Dashboard</h3>
+                                <p>High-performance dashboard with advanced filtering and real-time data.</p>
+                            </div>
+                        </article>
+
+                        <article class="project-card fade-up">
+                            <div class="card-preview bg-green"></div>
+                            <div class="card-details">
+                                <div class="tags"><span>Figma</span><span>System</span></div>
+                                <h3>Maroon Design Lab</h3>
+                                <p>Cohesive component library maintaining visual consistency across platforms.</p>
+                            </div>
+                        </article>
+
+                        <article class="project-card fade-up">
+                            <div class="card-preview bg-gray"></div>
+                            <div class="card-details">
+                                <div class="tags"><span>Next.js</span><span>Tailwind</span></div>
+                                <h3>Editorial Blog</h3>
+                                <p>Typography-focused blog platform with a custom, intuitive CMS.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="project-row">
+                        <article class="project-card wide fade-up">
+                            <div class="card-preview bg-blue-soft"></div>
+                            <div class="card-details">
+                                <div class="tags"><span>PWA</span><span>Mobile-First</span></div>
+                                <h3>Travel Journal App</h3>
+                                <p>A mobile-first web app designed to log travel memories with offline support and maps integration.</p>
+                            </div>
+                        </article>
+
+                        <article class="project-card fade-up">
+                            <div class="card-preview bg-dark-gray"></div>
+                            <div class="card-details">
+                                <div class="tags"><span>Redesign</span><span>UX Research</span></div>
+                                <h3>Edu Platform Redesign</h3>
+                                <p>Revitalized user experience and interface for a leading online learning platform.</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- 3. ABOUT -->
+                <section id="about" class="section-split">
+                    <div class="split-header">
+                        <h2>About Me</h2>
+                    </div>
+                    <div class="split-content">
+                        <div class="text-block">
+                            <p>I believe simplicity creates better digital products. I pay meticulous attention to layout, spacing, typography, and responsiveness.</p>
+                            <p>I prioritize writing clean, maintainable code and building reusable UI components. Quality over quantity is my development philosophy.</p>
+                        </div>
+                        <div class="tools-block">
+                            <h3>Current Stack</h3>
+                            <div class="tools-pills">
+                                <span>VS Code</span><span>Figma</span><span>Git</span>
+                                <span>Chrome DevTools</span><span>Vercel</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. CONTACT -->
+                <section id="contact" class="contact-section">
+                    <div class="contact-box">
+                        <h2>Let's build something.</h2>
+                        <p>Reach out for collaborations or just to say hi.</p>
+                        <a href="#" class="btn-white-spring">DM on Instagram</a>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- FOOTER (Selalu di bawah, tidak pernah bug) -->
+            <footer class="app-footer">
+                <div class="footer-row">
+                    <span class="brand-sm">Hanaf.</span>
+                    <div class="socials">
+                        <a href="#">GitHub</a>
+                        <a href="#">Dribbble</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                    <span class="copyright">&copy; 2026 Hanaf.</span>
+                </div>
+            </footer>
+
+            <!-- ========================================== -->
+            <!-- AUDIO PLAYER FLOATING BUTTON (Apple-like)    -->
+            <!-- ========================================== -->
+            <div class="audio-fab-wrapper" id="audioWrapper">
+                <!-- Tombol pembuka (Speaker) -->
+                <button class="audio-fab" id="audioToggleBtn">
+                    <svg class="speaker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 10v4a1 1 0 0 0 1 1h3l4.49 3.47c.4.31.94.23 1.27-.13l2.44-2.5c.43-.44.43-1.13 0-1.57l-2.44-2.5a.99.99 0 0 0-1.27-.13L7 13H4a1 1 0 0 0-1 1z"/>
+                        <path d="M15 7a5 5 0 0 1 0 10M18 4a9 9 0 0 1 0 16"/>
+                    </svg>
                 </button>
-            </div>
-            
-            <nav class="nav-right" id="desktopNav">
-                <a href="#works" class="nav-link">Karya</a>
-                <a href="#about" class="nav-link">Tentang</a>
-                <a href="#contact" class="btn-primary">Kontak</a>
-            </nav>
-        </header>
 
-        <!-- SIDEBAR POPUP (Desktop pop-up kiri, Mobile slide-in kanan) -->
-        <aside class="side-panel" id="sidePanel">
-            <div class="panel-header">
-                <span class="panel-title">Navigasi</span>
-                <button class="close-panel" id="closePanel">✕</button>
-            </div>
-            <nav class="panel-nav">
-                <a href="#works" class="panel-link">Karya</a>
-                <a href="#about" class="panel-link">Tentang</a>
-                <a href="#contact" class="panel-link">Kontak</a>
-            </nav>
-            <div class="panel-footer">
-                <button class="btn-block-black">Hubungi Saya</button>
-            </div>
-        </aside>
-
-        <!-- OVERLAY (Menutup popup saat klik di luar) -->
-        <div class="overlay" id="overlay"></div>
-
-        <!-- MAIN CONTENT -->
-        <main>
-            
-            <!-- 1. HERO SECTION -->
-            <section class="hero">
-                <div class="hero-content">
-                    <div class="badge-hitam">Frontend & UI Designer</div>
-                    <h1>Membangun antarmuka yang <span class="text-biru">fungsional</span> dan <span class="text-hijau">bersih</span>.</h1>
-                    <p>Saya Hanaf, seorang Frontend Developer dan UI Designer asal Indonesia. Saya fokus pada kode yang rapi, aksesibilitas, dan memberikan tujuan pada setiap piksel.</p>
-                    <div class="hero-action">
-                        <a href="#works" class="btn-primary">Lihat Karya</a>
+                <!-- Mini Player yang muncul dari bawah -->
+                <div class="audio-mini-player" id="audioPlayer">
+                    <div class="player-content">
+                        <div class="player-info">
+                            <span class="track-name">Ambient Loop</span>
+                            <div class="progress-container">
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="play-btn" id="playBtn">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-            </section>
-
-            <!-- 2. FEATURED WORKS (Dua Bagian Proyek) -->
-            <section id="works" class="section-block">
-                <div class="section-head">
-                    <h2>Featured Works</h2>
-                </div>
-
-                <!-- Baris Proyek 1 -->
-                <div class="project-row">
-                    <article class="project-card">
-                        <div class="card-img bg-biru"></div>
-                        <div class="card-body">
-                            <div class="card-tags">
-                                <span>React</span><span>Vercel</span>
-                            </div>
-                            <h3>Dashboard E-Commerce</h3>
-                            <p>Dashboard performa tinggi dengan fitur filtering lanjutan dan visualisasi data real-time.</p>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="card-img bg-hijau"></div>
-                        <div class="card-body">
-                            <div class="card-tags">
-                                <span>Figma</span><span>Design System</span>
-                            </div>
-                            <h3>Maroon Design Lab</h3>
-                            <p>Pustaka komponen UI yang kohesif untuk menjaga konsistensi antar platform.</p>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="card-img bg-abu"></div>
-                        <div class="card-body">
-                            <div class="card-tags">
-                                <span>Next.js</span><span>Tailwind</span>
-                            </div>
-                            <h3>Blog Editorial</h3>
-                            <p>Platform blog yang berfokus pada tipografi dengan integrasi CMS kustom.</p>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Baris Proyek 2 -->
-                <div class="project-row">
-                    <article class="project-card wide">
-                        <div class="card-img bg-biru-muda"></div>
-                        <div class="card-body">
-                            <div class="card-tags">
-                                <span>Mobile First</span><span>PWA</span>
-                            </div>
-                            <h3>Aplikasi Jurnal Perjalanan</h3>
-                            <p>Web app mobile-first yang dirancang untuk mencatat kenangan perjalanan dengan dukungan offline.</p>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="card-img bg-hitam-soft"></div>
-                        <div class="card-body">
-                            <div class="card-tags">
-                                <span>Redesign</span><span>UI/UX</span>
-                            </div>
-                            <h3>Redesign Platform Edukasi</h3>
-                            <p>Menyegarkan tampilan dan pengalaman pengguna platform belajar online agar lebih intuitif.</p>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- 3. ABOUT SECTION -->
-            <section id="about" class="section-block">
-                <div class="section-head">
-                    <h2>Tentang Saya</h2>
-                </div>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p>Saya percaya bahwa kesederhanaan menciptakan produk digital yang lebih baik. Saya sangat memperhatikan layout, jarak antar elemen, tipografi, dan responsivitas.</p>
-                        <p>Saya lebih suka menulis kode yang bersih dan mudah dipelihara, serta membangun komponen UI yang dapat digunakan kembali.</p>
-                    </div>
-                    <div class="about-tools">
-                        <h3>Tools & Stack</h3>
-                        <div class="tool-list">
-                            <span>VS Code</span><span>Figma</span><span>Git</span>
-                            <span>Chrome DevTools</span><span>Vercel</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. CONTACT SECTION -->
-            <section id="contact" class="contact-section">
-                <div class="contact-box">
-                    <h2>Siap membangun sesuatu?</h2>
-                    <p>Jangan ragu untuk menghubungi saya untuk kolaborasi atau sekadar menyapa.</p>
-                    <a href="#" class="btn-white">DM di Instagram</a>
-                </div>
-            </section>
-
-        </main>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div class="footer-inner">
-                <span class="footer-logo">H.</span>
-                <div class="footer-social">
-                    <a href="#">GitHub</a>
-                    <a href="#">Dribbble</a>
-                    <a href="#">Instagram</a>
-                </div>
-                <span class="footer-copy">&copy; 2026 Hanaf.</span>
             </div>
-        </footer>
 
+        </div>
     </div>
+
+    <!-- Audio Element Tersembunyi -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
 
     <script src="script.js"></script>
 </body>
