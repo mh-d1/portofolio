@@ -4,211 +4,193 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hanaf | Frontend & UI Designer</title>
+    <!-- Google Fonts: Inter for Vercel-style typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="app-container">
-        
-        <!-- 1. SIDEBAR -->
-        <aside class="app-sidebar" id="sidebar">
-            <div class="logo-area">Hanaf.</div>
-            
-            <nav class="sidebar-nav">
-                <a href="#overview" class="active" data-target="overview"><span class="nav-icon">⌂</span> Overview</a>
-                <a href="#projects" data-target="projects"><span class="nav-icon">◆</span> Projects</a>
-                <a href="#skills" data-target="skills"><span class="nav-icon">▦</span> Skills</a>
-                <a href="#about" data-target="about"><span class="nav-icon">⊡</span> About</a>
+    <!-- PREMIUM NAVBAR (Vercel / Spotify Style) -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="brand">Hanaf.</div>
+            <nav class="nav-links">
+                <a href="#works" class="nav-item">Works</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#contact" class="nav-item btn-nav">Contact</a>
             </nav>
-
-            <div class="sidebar-footer">
-                <a href="#contact" class="btn-primary full-width animate-pulse-on-hover">Hire Me</a>
+            <div class="hamburger" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
             </div>
-        </aside>
+        </div>
+    </header>
 
-        <!-- 2. MAIN CONTENT -->
-        <main class="app-main">
-            
-            <!-- HEADER -->
-            <header class="app-header" id="overview">
-                <div class="header-title-group">
-                    <h1 class="greeting">Hi, I'm Hanaf.</h1>
-                    <span class="sub-greeting">Frontend Developer & UI Designer from Indonesia.</span>
-                </div>
-                <div class="header-actions">
-                    <div class="theme-toggle" id="themeToggle">
-                        <span class="toggle-track">
-                            <span class="toggle-thumb"></span>
-                        </span>
-                    </div>
-                </div>
-            </header>
-
-            <!-- ==================== BLOCK 1: HERO & SPECIALTIES ==================== -->
-            <div class="dashboard-grid-2">
-                
-                <!-- Intro Block -->
-                <div class="block-card hero-block fade-up">
-                    <div class="hero-content">
-                        <h2>Turning ideas into <span class="highlight-maroon">clean, responsive</span> websites.</h2>
-                        <p class="natural-text">I enjoy building interfaces that are intuitive, accessible, and performant. I focus on layout, spacing, and typography. Simplicity creates better digital products.</p>
-                        
-                        <div class="hero-actions-group">
-                            <a href="#projects" class="btn-primary smooth-hover">View Work</a>
-                            <a href="#about" class="btn-outline smooth-hover">About Me</a>
-                        </div>
+    <main>
+        <!-- 1. HERO SECTION (Vercel Minimalism) -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <span class="badge-pill">Frontend & UI Designer</span>
+                    <h1>Building interfaces that feel <span class="text-accent">intentional</span> and <span class="text-accent">human</span>.</h1>
+                    <p class="hero-desc">
+                        I'm Hanaf. I focus on clean code, accessible interfaces, and giving every pixel a purpose. Based in Indonesia with 2+ years of experience.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#works" class="btn-primary">View Projects</a>
+                        <a href="#about" class="btn-secondary">About Me</a>
                     </div>
                 </div>
-
-                <!-- Interactive Specialties Slider Block -->
-                <div class="block-card specialties-card interactive-card fade-up">
-                    <div class="card-header-mini">
-                        <span>Specialties</span>
-                        <span class="badge-maroon">Interactive</span>
-                    </div>
-                    
-                    <div class="specialties-slider-container">
-                        <div class="specialties-track" id="specTrack">
-                            <div class="spec-item">
-                                <span class="dot-fill"></span> Responsive Dev
-                            </div>
-                            <div class="spec-item">
-                                <span class="dot-fill"></span> Modern UI Design
-                            </div>
-                            <div class="spec-item">
-                                <span class="dot-fill"></span> Component-based UI
-                            </div>
-                            <div class="spec-item">
-                                <span class="dot-fill"></span> Performance Opt.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-controls">
-                        <span>Drag to scroll</span>
-                        <div class="scroll-indicator"><div class="scroll-thumb"></div></div>
-                    </div>
+                <!-- Floating Card elements (Spotify style floating cards) -->
+                <div class="hero-visuals">
+                    <div class="float-card card-1"><span>HTML5</span></div>
+                    <div class="float-card card-2"><span>CSS3</span></div>
+                    <div class="float-card card-3"><span>React</span></div>
+                    <div class="float-card card-4"><span>Figma</span></div>
                 </div>
             </div>
+        </section>
 
-            <!-- ==================== BLOCK 2: PROJECTS & SKILLS SLIDER ==================== -->
-            <section id="projects" class="section-pad">
+        <!-- 2. PROJECTS SECTION (Pinterest Masonry + Spotify Cards) -->
+        <section id="works" class="section-works">
+            <div class="container">
                 <div class="section-header">
-                    <h2>Recent Projects</h2>
-                </div>
-
-                <div class="project-layout-grid">
-                    <!-- Project List (Smooth hover states) -->
-                    <div class="block-card list-card fade-up">
-                        <div class="list-item interactive-row">
-                            <div class="list-icon">📦</div>
-                            <div class="list-info">
-                                <h4>E-Commerce Dashboard</h4>
-                                <span class="sub-text">React, CSS Modules</span>
-                            </div>
-                            <span class="status-badge">Live</span>
-                        </div>
-                        <div class="list-item interactive-row">
-                            <div class="list-icon">🎨</div>
-                            <div class="list-info">
-                                <h4>Design System Lab</h4>
-                                <span class="sub-text">Figma, Storybook</span>
-                            </div>
-                            <span class="status-badge">WIP</span>
-                        </div>
-                        <div class="list-item interactive-row border-none">
-                            <div class="list-icon">✈️</div>
-                            <div class="list-info">
-                                <h4>Personal Blog UI</h4>
-                                <span class="sub-text">Next.js, Tailwind</span>
-                            </div>
-                            <span class="status-badge">Done</span>
-                        </div>
-                    </div>
-
-                    <!-- Interactive "Skill Level" Slider -->
-                    <div class="block-card skill-slider-card fade-up">
-                        <div class="card-header-mini">
-                            <span>Skill Confidence</span>
-                        </div>
-                        <p class="small-note">Drag to see where I stand.</p>
-                        
-                        <div class="skill-slider-group">
-                            <span class="skill-label">Frontend</span>
-                            <div class="drag-slider track" data-skill="frontend">
-                                <div class="fill" style="width: 80%;"></div>
-                                <div class="thumb" style="left: 80%;" draggable="true">⏺</div>
-                            </div>
-                        </div>
-
-                        <div class="skill-slider-group">
-                            <span class="skill-label">UI Design</span>
-                            <div class="drag-slider track" data-skill="ui">
-                                <div class="fill" style="width: 70%;"></div>
-                                <div class="thumb" style="left: 70%;" draggable="true">⏺</div>
-                            </div>
-                        </div>
+                    <h2>Selected Works</h2>
+                    <div class="filter-group">
+                        <button class="filter-btn active">All</button>
+                        <button class="filter-btn">Development</button>
+                        <button class="filter-btn">UI Design</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- ==================== BLOCK 3: ABOUT, TOOLS & WORK STYLE ==================== -->
-            <div class="split-50-50 section-pad" id="about">
-                
-                <!-- About Card -->
-                <div class="block-card about-card fade-up">
-                    <h3>About Me</h3>
-                    <p class="natural-text">I'm a Frontend Developer & UI Designer with 2+ years of experience based in Indonesia. I enjoy solving UI problems and continuously learning better ways to design and develop interfaces.</p>
-                    <p class="natural-text">I value consistency, clean code, and performance before adding visual effects.</p>
+                <!-- Pinterest-style Masonry Grid -->
+                <div class="masonry-grid">
+                    <!-- Tall Project -->
+                    <article class="project-card tall">
+                        <div class="card-img-wrapper">
+                            <div class="img-placeholder bg-maroon-light"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">React</span>
+                                <span class="tag">Tailwind</span>
+                            </div>
+                            <h3>E-Commerce Dashboard</h3>
+                            <p>Performance-focused dashboard with advanced filtering and data visualization.</p>
+                        </div>
+                    </article>
+
+                    <!-- Wide Project -->
+                    <article class="project-card wide">
+                        <div class="card-img-wrapper">
+                            <div class="img-placeholder bg-accent-light"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">Figma</span>
+                                <span class="tag">Design System</span>
+                            </div>
+                            <h3>Maroon Design Lab</h3>
+                            <p>A cohesive component library built to maintain consistency across multiple platforms.</p>
+                        </div>
+                    </article>
+
+                    <!-- Square Project -->
+                    <article class="project-card square">
+                        <div class="card-img-wrapper">
+                            <div class="img-placeholder bg-dark-maroon"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">Next.js</span>
+                            </div>
+                            <h3>Editorial Blog UI</h3>
+                        </div>
+                    </article>
+
+                    <!-- Tall Project 2 -->
+                    <article class="project-card tall">
+                        <div class="card-img-wrapper">
+                            <div class="img-placeholder bg-soft-gray"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag">Responsive</span>
+                                <span class="tag">CSS Grid</span>
+                            </div>
+                            <h3>Travel Journal App</h3>
+                            <p>Mobile-first web app designed for logging travel memories with offline support.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ABOUT & SKILLS SECTION (Vercel Split/Grid) -->
+        <section id="about" class="section-about bg-cream">
+            <div class="container about-grid">
+                <div class="about-text">
+                    <span class="section-label">About</span>
+                    <h2>I enjoy solving UI problems.</h2>
+                    <p>I'm a frontend developer and UI designer who believes simplicity creates better digital products. I pay close attention to layout, spacing, typography, and responsiveness.</p>
+                    <p>I prefer writing clean and maintainable code, and building reusable UI components. Quality over quantity is my approach to every project.</p>
                     
-                    <div class="work-style-box">
-                        <h4>Work Style</h4>
-                        <ul>
-                            <li>Reusable UI components</li>
-                            <li>Clean & maintainable code</li>
-                            <li>Quality over quantity</li>
-                        </ul>
+                    <div class="tool-stack">
+                        <span>VS Code</span><span>Figma</span><span>Git</span><span>Chrome DevTools</span><span>Vercel</span>
                     </div>
                 </div>
-
-                <!-- Tools & Stack Card -->
-                <div class="block-card tools-card fade-up">
-                    <h3>Tools & Stack</h3>
-                    <div class="tools-grid">
-                        <div class="tool-item">HTML5</div>
-                        <div class="tool-item">CSS3</div>
-                        <div class="tool-item">JavaScript (ES6+)</div>
-                        <div class="tool-item">Flexbox & Grid</div>
-                        <div class="tool-item">Figma</div>
-                        <div class="tool-item">Git & GitHub</div>
-                        <div class="tool-item">Vercel</div>
-                        <div class="tool-item">Chrome DevTools</div>
+                
+                <div class="skills-block">
+                    <h3>Skills & Expertise</h3>
+                    <div class="skills-list">
+                        <div class="skill-group">
+                            <h4>Frontend</h4>
+                            <ul>
+                                <li>HTML5 / CSS3 / JS (ES6+)</li>
+                                <li>Responsive Design</li>
+                                <li>CSS Grid & Flexbox</li>
+                                <li>Web Accessibility</li>
+                            </ul>
+                        </div>
+                        <div class="skill-group">
+                            <h4>UI Design</h4>
+                            <ul>
+                                <li>Figma (Auto Layout)</li>
+                                <li>Wireframing & Prototyping</li>
+                                <li>Typography & Layout</li>
+                                <li>Design Systems</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- ==================== BLOCK 4: CONTACT & FOOTER ==================== -->
-            <section id="contact" class="contact-cta-block fade-up">
-                <div class="cta-content">
-                    <h2>Have a project in mind?</h2>
-                    <p>DM me on Instagram for project inquiries or just to say hi.</p>
-                    <a href="#" class="btn-primary-dark smooth-hover bounce-on-hover">Instagram</a>
+        <!-- 4. CONTACT SECTION (Spotify Dark Immersive) -->
+        <section id="contact" class="section-contact">
+            <div class="container contact-box">
+                <div class="contact-content">
+                    <h2>Ready to bring your idea to life?</h2>
+                    <p>Feel free to reach out for collaborations or just a friendly chat.</p>
+                    <a href="#" class="btn-primary-dark">Connect on Instagram</a>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <footer class="app-footer">
-                <div class="footer-left">&copy; 2026 Hanaf. All Rights Reserved.</div>
-                <div class="footer-right">
+        <!-- 5. FOOTER (Minimalist) -->
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div class="footer-brand">Hanaf.</div>
+                <div class="footer-nav">
                     <a href="#">GitHub</a>
                     <a href="#">Dribbble</a>
                     <a href="#">Instagram</a>
                 </div>
-            </footer>
-
-        </main>
-    </div>
+                <div class="footer-copy">&copy; 2026 Hanaf. Built with care.</div>
+            </div>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>
